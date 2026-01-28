@@ -19,7 +19,7 @@
             --bg-color: #000000;
             --text-white: #ffffff;
             
-            /* ЦВЕТА */
+            /* --- ЦВЕТА --- */
             --mail-main: #00a9ff;
             --mail-hover: #006dd0;
 
@@ -35,18 +35,29 @@
             --inst-main: #6c45ef;
             --inst-hover: #ffd603;
 
-            /* РАЗМЕРЫ (Адаптивные) */
-            --avatar-size: clamp(100px, 25vw, 150px);
+            /* Pinterest */
+            --pin-main: #ffffff;
+            --pin-hover: #e60022;
+
+            /* --- РАЗМЕРЫ (Увеличенные) --- */
+            /* Avatar */
+            --avatar-size: clamp(100px, 24vw, 150px);
             
+            /* Text Sizes */
+            /* Имя: огромное, но безопасное */
             --font-name: clamp(36px, 11vw, 80px);
-            --font-mail: clamp(22px, 6.5vw, 42px);
-            --font-social: clamp(32px, 10vw, 72px); 
             
-            /* ОТСТУПЫ */
+            /* Почта: чуть меньше соцсетей, но читаемая */
+            --font-mail: clamp(22px, 6.5vw, 42px);
+            
+            /* Соцсети: УВЕЛИЧИЛ С 10vw до 11.5vw */
+            --font-social: clamp(34px, 11.5vw, 80px); 
+            
+            /* --- ОТСТУПЫ (Оптимизация под 5 кнопок) --- */
             --gap-avatar-name: 20px;
-            --gap-name-mail: 4px;       /* Имя и почта почти слиплись */
-            --gap-blocks: 4vh;          /* Отступ перед блоком соцсетей */
-            --gap-socials: 6px;         /* Соцсети плотно друг к другу */
+            --gap-name-mail: 4px;
+            --gap-blocks: 4vh;          /* Разделитель блоков */
+            --gap-socials: 4px;         /* Чуть плотнее (было 6px), чтобы влез Pinterest */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -61,9 +72,9 @@
             align-items: center;
             justify-content: flex-start;
             
-            /* Поднято вверх, как ты просил */
-            padding-top: 5vh; 
-            padding-bottom: 5vh;
+            /* Чуть уменьшил верхний отступ (с 5vh до 4vh), чтобы влезло больше кнопок */
+            padding-top: 4vh; 
+            padding-bottom: 4vh;
             
             min-height: 100vh;
             width: 100%;
@@ -80,11 +91,10 @@
             text-align: center;
             width: fit-content;
             
-            /* Увеличенная зона клика */
+            /* Зона клика */
             padding: 2px 10px; 
         }
 
-        /* Эффект увеличения только для ссылок с классом zoom-effect */
         .zoom-effect:hover {
             transform: scale(1.05);
         }
@@ -94,19 +104,16 @@
             opacity: 0.8;
         }
 
-        /* --- 1. АВАТАРКА (Исправленная) --- */
+        /* --- 1. АВАТАРКА (Белый круг) --- */
         .avatar-circle {
-            display: block; /* Важно! */
+            display: block;
             width: var(--avatar-size);
             height: var(--avatar-size);
-            border-radius: 50%; /* Делает идеальный круг */
-            background-color: #ffffff; /* Белый цвет */
-            
+            border-radius: 50%;
+            background-color: #ffffff;
             margin-bottom: var(--gap-avatar-name);
-            flex-shrink: 0; /* Запрещает сплющивание */
-            
-            /* Убрали лишние теги внутри, круг рисуется самим контейнером */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); /* Легкое свечение (опционально) */
+            flex-shrink: 0;
+            cursor: pointer;
         }
 
         /* --- 2. ИМЯ --- */
@@ -149,7 +156,7 @@
             padding: 4px 15px;
         }
 
-        /* Цвета брендов */
+        /* Colors */
         .tiktok { color: var(--tt-main); }
         .tiktok:hover { color: var(--tt-hover); }
 
@@ -161,6 +168,9 @@
 
         .instagram { color: var(--inst-main); }
         .instagram:hover { color: var(--inst-hover); }
+
+        .pinterest { color: var(--pin-main); }
+        .pinterest:hover { color: var(--pin-hover); }
 
     </style>
 </head>
@@ -179,6 +189,7 @@
         <a href="https://t.me/geragaraza" class="social-item telegram scramble-target zoom-effect">Telegram</a>
         <a href="https://www.instagram.com/geragaraza" class="social-item instagram scramble-target zoom-effect">Instagram</a>
         <a href="https://www.youtube.com/@geragaraza" class="social-item youtube scramble-target zoom-effect">YouTube</a>
+        <a href="https://www.pinterest.com/geragaraza/" class="social-item pinterest scramble-target zoom-effect">Pinterest</a>
     </nav>
 
     <script>
@@ -189,7 +200,6 @@
             const originalText = el.innerText;
             let iteration = 0;
             
-            // Быстрый перебор (25мс * 20 шагов = 0.5 сек для слова длиной 10)
             const interval = setInterval(() => {
                 el.innerText = originalText.split("")
                     .map((letter, index) => {
@@ -206,7 +216,6 @@
             }, 25); 
         }
 
-        // Запуск при загрузке
         window.addEventListener('load', () => {
             document.querySelectorAll('.scramble-target').forEach(el => runScramble(el));
         });
