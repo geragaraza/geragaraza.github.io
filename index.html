@@ -4,204 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Geragaraza (Herman Harazha)</title>
-    
     <link rel="icon" href="favicon.png" type="image/png">
     
     <meta property="og:title" content="Herman Harazha">
     <meta property="og:description" content="Contact & Social Links">
-    <meta property="og:image" content="preview.jpg">
     <meta property="og:type" content="website">
 
     <style>
         :root {
-            /* --- ЦВЕТОВАЯ ПАЛИТРА --- */
             --bg-color: #000000;
             --text-white: #ffffff;
-            --accent-gray: rgba(255, 255, 255, 0.4);
-            --mail-color: #0A84FF; /* iOS Blue */
             
-            /* --- РАЗМЕРЫ (МАТЕМАТИКА) --- */
-            /* clamp(мин, идеал, макс) - гарантирует, что текст не станет слишком мелким или слишком огромным */
-            
-            /* Имя: 100% доминанта. На мобильных ~32-34px, на ПК до 72px */
-            --font-name: clamp(32px, 5vw, 72px);
-            
-            /* Почта: ~60-70% от имени. Достаточно крупно для пальца */
-            --font-mail: clamp(20px, 3vw, 42px);
-            
-            /* Соцсети: ~90% от имени. Крупные, массивные */
-            --font-social: clamp(28px, 4.5vw, 64px);
-            
-            /* Кнопка копирования: маленькая техническая подпись */
-            --font-copy: clamp(12px, 1.5vw, 18px);
+            /* --- ЦВЕТА (Твои настройки) --- */
+            /* Почта */
+            --mail-main: #00a9ff;
+            --mail-hover: #006dd0;
 
-            /* --- ОТСТУПЫ --- */
-            --spacing-top: 15vh;        /* Высота от верха экрана (поднято вверх) */
-            --gap-name-mail: 8px;       /* Расстояние Имя <-> Почта (плотно) */
-            --gap-mail-copy: 12px;      /* Расстояние Почта <-> Кнопка Copy */
-            --gap-blocks: 50px;         /* Расстояние Блок контактов <-> Соцсети */
-            --gap-socials: 12px;        /* Расстояние МЕЖДУ соцсетями (плотно) */
+            /* TikTok */
+            --tt-main: #25F4EE;
+            --tt-hover: #FE2C55;
+
+            /* Telegram */
+            --tg-main: #0088CC;
+            --tg-hover: #24A1DE;
+
+            /* YouTube */
+            --yt-main: #FF0000;
+            --yt-hover: #ffffff;
+
+            /* Instagram */
+            --inst-main: #6228d7;
+            --inst-hover: #ee2a7b;
+
+            /* --- РАЗМЕРЫ (Smart Sizing) --- */
+            /* clamp(MIN, PREFERRED, MAX) */
+            /* 8.5vw означает 8.5% от ширины экрана. Это гарантирует, что текст всегда влезает. */
+            
+            --font-name: clamp(34px, 9vw, 80px);    /* Самый крупный */
+            --font-mail: clamp(22px, 5.5vw, 50px);  /* Чуть меньше соцсетей */
+            --font-social: clamp(30px, 8vw, 70px);  /* Крупные ссылки */
+            
+            --gap-blocks: 5vh; /* Отступ между блоком имени и соцсетями */
+            --gap-items: 15px; /* Отступ между ссылками */
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent; /* Убирает синий квадрат при тапе на Android */
-        }
+        /* Сброс стилей */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-white);
-            /* Системный стек шрифтов Apple */
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
             
             display: flex;
             flex-direction: column;
-            align-items: center;        /* Строго по центру горизонтально */
-            justify-content: flex-start; /* Контент идет от верха */
+            align-items: center;
+            /* Контент начинается не с самого верха, а с отступом 15% высоты экрана */
+            justify-content: flex-start;
+            padding-top: 15vh; 
             
             min-height: 100vh;
-            padding: 20px;
-            padding-top: var(--spacing-top); /* Сдвиг контента вверх */
-            
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased; /* Сглаживание шрифтов */
+            overflow-x: hidden; /* Запрет горизонтального скролла */
+            width: 100%;
         }
 
-        /* Общие стили для ссылок */
+        /* Общая настройка ссылок */
         a {
             text-decoration: none;
-            color: inherit;
             cursor: pointer;
-            transition: opacity 0.2s ease, transform 0.1s ease;
-            outline: none;
-            user-select: none; /* Чтобы не выделялся текст при частых кликах */
-        }
-        
-        a:active {
-            opacity: 0.6;
-            transform: scale(0.98);
+            white-space: nowrap; /* ЗАПРЕТ ПЕРЕНОСА СТРОКИ */
+            transition: color 0.2s ease, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            user-select: none;
         }
 
-        /* --- БЛОК 1: ИМЯ И ПОЧТА --- */
-        .identity-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            margin-bottom: var(--gap-blocks);
+        /* Эффект зума при наведении (для всех ссылок кроме имени) */
+        .zoom-effect:hover {
+            transform: scale(1.05); /* Увеличение на 5% */
         }
 
-        .name-link h1 {
+        /* --- 1. ИМЯ (Статичное) --- */
+        .name-header {
             font-size: var(--font-name);
-            font-weight: 800; /* Жирный, но не Black */
-            letter-spacing: -1px;
-            line-height: 1.1;
-            white-space: nowrap; /* Гарантия одной строки */
-            margin-bottom: var(--gap-name-mail);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--text-white);
+            margin-bottom: 10px;
+            cursor: default; /* Курсор не меняется */
         }
 
+        /* --- 2. ПОЧТА --- */
         .mail-link {
             font-size: var(--font-mail);
-            font-weight: 500; /* Medium */
-            color: var(--mail-color);
-            letter-spacing: -0.5px;
-            white-space: nowrap;
-        }
-
-        /* Кнопка Copy */
-        .copy-btn {
-            margin-top: var(--gap-mail-copy);
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--accent-gray);
-            border: none;
-            font-size: var(--font-copy);
-            font-weight: 500;
-            padding: 6px 14px;
-            border-radius: 99px; /* Полная пилюля */
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: inherit;
-        }
-        
-        .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-        }
-        
-        .copy-btn.copied {
-            background: #32D74B; /* Apple Green */
-            color: #000;
             font-weight: 600;
+            color: var(--mail-main);
+            letter-spacing: -0.5px;
+            margin-bottom: var(--gap-blocks); /* Отделяем от соцсетей */
+        }
+        
+        .mail-link:hover {
+            color: var(--mail-hover);
         }
 
-        /* --- БЛОК 2: СОЦСЕТИ --- */
-        .social-group {
+        /* --- 3. СОЦСЕТИ --- */
+        .social-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: var(--gap-socials); /* Плотная компоновка */
+            gap: var(--gap-items);
             width: 100%;
         }
 
         .social-item {
             font-size: var(--font-social);
-            font-weight: 800; /* Жирный акцидентный шрифт */
-            letter-spacing: -0.8px;
-            white-space: nowrap;
-            /* Цвет по умолчанию белый, бренд при наведении (на ПК) */
-            color: var(--text-white); 
+            font-weight: 800; /* Жирный шрифт */
+            letter-spacing: -1px;
         }
 
-        /* Цвета при наведении (Desktop) */
-        @media (hover: hover) {
-            .tiktok:hover { color: #25F4EE; }
-            .telegram:hover { color: #2AABEE; }
-            .instagram:hover { color: #E1306C; }
-            .youtube:hover { color: #FF0000; }
-        }
-        
-        /* Мобильные настройки (если нужно будет что-то специфичное) */
-        @media (max-width: 600px) {
-            :root {
-                --spacing-top: 12vh; /* На маленьких экранах чуть выше */
-            }
-        }
+        /* Цвета соцсетей (Main -> Hover) */
+        .tiktok { color: var(--tt-main); }
+        .tiktok:hover { color: var(--tt-hover); }
+
+        .telegram { color: var(--tg-main); }
+        .telegram:hover { color: var(--tg-hover); }
+
+        .youtube { color: var(--yt-main); }
+        .youtube:hover { color: var(--yt-hover); }
+
+        .instagram { color: var(--inst-main); }
+        .instagram:hover { color: var(--inst-hover); }
+
     </style>
 </head>
 <body>
 
-    <div class="identity-group">
-        <a href="https://geragaraza.com/" class="name-link">
-            <h1 class="scramble-target">Herman Harazha</h1>
-        </a>
+    <h1 class="name-header">Herman Harazha</h1>
 
-        <a href="mailto:Geragaraza@gmail.com" class="mail-link scramble-target">Geragaraza@gmail.com</a>
-        
-        <button class="copy-btn" onclick="copyEmail(this)">Copy email</button>
-    </div>
+    <a class="mail-link scramble-target zoom-effect" onclick="copyEmail(this)">Geragaraza@gmail.com</a>
 
-    <nav class="social-group">
-        <a href="https://www.tiktok.com/@geragaraza" class="social-item tiktok scramble-target">TikTok</a>
-        <a href="https://t.me/geragaraza" class="social-item telegram scramble-target">Telegram</a>
-        <a href="https://www.instagram.com/geragaraza" class="social-item instagram scramble-target">Instagram</a>
-        <a href="https://www.youtube.com/@geragaraza" class="social-item youtube scramble-target">YouTube</a>
+    <nav class="social-container">
+        <a href="https://www.tiktok.com/@geragaraza" class="social-item tiktok scramble-target zoom-effect">TikTok</a>
+        <a href="https://t.me/geragaraza" class="social-item telegram scramble-target zoom-effect">Telegram</a>
+        <a href="https://www.instagram.com/geragaraza" class="social-item instagram scramble-target zoom-effect">Instagram</a>
+        <a href="https://www.youtube.com/@geragaraza" class="social-item youtube scramble-target zoom-effect">YouTube</a>
     </nav>
 
     <script>
-        // --- 1. Scramble Effect (Матрица) ---
-        // Используем только заглавные и цифры для стиля
+        // --- ЛОГИКА АНИМАЦИИ (SCRAMBLE) ---
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         
         function runScramble(el) {
-            if (el.dataset.animating === "true") return;
-            el.dataset.animating = "true";
-
             const originalText = el.innerText;
             let iteration = 0;
             
-            // Интервал 25мс = очень быстро, как ты просил
+            // Интервал настроен так, чтобы вся анимация заняла ~0.5 сек
+            // Длина среднего слова ~10 букв. 10 итераций * 50мс = 500мс.
             const interval = setInterval(() => {
                 el.innerText = originalText.split("")
                     .map((letter, index) => {
@@ -210,54 +166,43 @@
                     })
                     .join("");
                 
-                // Шаг +1 (быстрое раскрытие)
                 if(iteration >= originalText.length) {
                     clearInterval(interval);
-                    el.innerText = originalText; // Фиксация
-                    el.dataset.animating = "false";
+                    el.innerText = originalText;
                 }
-                iteration += 1; 
-            }, 25); 
+                
+                iteration += 1 / 2; // Шаг скорости
+            }, 20); 
         }
 
-        // Запуск при полной загрузке
+        // Запуск только для элементов с классом .scramble-target (Почта + Соцсети)
+        // Имя (.name-header) игнорируется
         window.addEventListener('load', () => {
             document.querySelectorAll('.scramble-target').forEach(el => runScramble(el));
         });
 
-
-        // --- 2. Логика Копирования ---
-        function copyEmail(btn) {
+        // --- ЛОГИКА КОПИРОВАНИЯ ПОЧТЫ ---
+        function copyEmail(element) {
             const email = "Geragaraza@gmail.com";
             
-            // Haptic feedback (вибрация) для Android
-            if (navigator.vibrate) navigator.vibrate(15);
-
+            // Копируем в буфер
             navigator.clipboard.writeText(email).then(() => {
-                const originalText = btn.innerText;
-                
-                // Визуальное подтверждение
-                btn.innerText = "Copied ✓";
-                btn.classList.add("copied");
+                // Вибрация (для Android)
+                if (navigator.vibrate) navigator.vibrate(15);
 
-                // Возврат через 1.5 секунды
+                const originalText = element.innerText;
+                
+                // Подмена текста
+                element.innerText = "Copied";
+                
+                // Возврат через 1.2 секунды
                 setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.classList.remove("copied");
-                }, 1500);
+                    element.innerText = email; // Возвращаем именно email, а не "originalText" (на случай бага анимации)
+                }, 1200);
             }).catch(err => {
-                console.error('Copy failed', err);
-                btn.innerText = "Error";
+                console.error("Ошибка копирования", err);
             });
         }
-
-
-        // --- 3. Общая вибрация на ссылках (UX) ---
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navigator.vibrate) navigator.vibrate(10);
-            });
-        });
     </script>
 
 </body>
