@@ -3,104 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gera Harazha (Herman Harazha)</title>
+    <title>Geragaraza (Herman Harazha)</title>
     <style>
         :root {
             --bg-color: #000000;
             --text-primary: #ffffff;
         }
 
+        /* Плавное появление всего сайта */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
-            /* Используем шрифт Apple */
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Смещаем наверх */
+            justify-content: flex-start;
             min-height: 100vh;
             margin: 0;
-            padding: 80px 20px 40px; /* Большой отступ сверху */
+            padding: 10vh 20px;
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
+            animation: fadeIn 1.2s ease-out;
         }
 
+        /* Аватарка-ссылка */
+        .avatar-link {
+            text-decoration: none;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .avatar-link:hover {
+            transform: scale(1.05);
+        }
         .avatar {
-            width: 120px;
-            height: 120px;
-            background-color: #ffffff; /* Белая аватарка */
+            width: 160px; /* Еще больше */
+            height: 160px;
+            background-color: #ffffff;
             border-radius: 50%;
-            margin-bottom: 24px;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
         }
 
+        /* Имя-ссылка */
+        .name-link {
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.3s ease;
+        }
+        .name-link:hover {
+            opacity: 0.8;
+        }
         h1 {
-            font-size: 32px; /* Увеличенный размер */
+            font-size: 48px; /* Большой размер */
             font-weight: 700;
-            margin: 0 0 48px;
-            letter-spacing: -0.5px;
+            margin: 0 0 60px;
+            letter-spacing: -1.5px;
+            text-align: center;
         }
 
         .links-container {
             width: 100%;
-            max-width: 480px; /* Увеличили ширину контейнера для ПК */
+            max-width: 600px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-
-        .link-card {
-            display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 22px; /* Массивные кнопки */
-            border: 2px solid; 
-            border-radius: 18px; /* Более мягкие углы */
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 19px; /* Крупный текст */
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: transparent;
+            gap: 40px; /* Больше пространства между ссылками */
         }
 
-        /* Настройка цветов по твоим HEX */
+        .link-item {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 36px; /* Огромный шрифт */
+            letter-spacing: -1px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding-bottom: 4px;
+            border-bottom: 3px solid transparent; /* Линия под текстом */
+        }
+
+        /* Индивидуальные стили и переходы цветов */
         
-        /* TikTok */
-        .tiktok { border-color: #25F4EE; color: #25F4EE; }
-        .tiktok:hover { border-color: #FE2C55; color: #FE2C55; transform: translateY(-3px); }
+        /* TikTok: Cyan -> Red */
+        .tiktok { color: #25F4EE; border-bottom-color: rgba(37, 244, 238, 0.3); }
+        .tiktok:hover { color: #FE2C55; border-bottom-color: #FE2C55; transform: scale(1.1); }
 
-        /* Telegram */
-        .telegram { border-color: #0088CC; color: #0088CC; }
-        .telegram:hover { border-color: #24A1DE; color: #24A1DE; transform: translateY(-3px); }
+        /* Telegram: Blue -> Light Blue */
+        .telegram { color: #0088CC; border-bottom-color: rgba(0, 136, 204, 0.3); }
+        .telegram:hover { color: #24A1DE; border-bottom-color: #24A1DE; transform: scale(1.1); }
 
-        /* Instagram */
-        .instagram { border-color: #6228d7; color: #6228d7; }
-        .instagram:hover { border-color: #ee2a7b; color: #ee2a7b; transform: translateY(-3px); }
+        /* Instagram: Purple -> Pink */
+        .instagram { color: #6228d7; border-bottom-color: rgba(98, 40, 215, 0.3); }
+        .instagram:hover { color: #ee2a7b; border-bottom-color: #ee2a7b; transform: scale(1.1); }
 
-        /* YouTube */
-        .youtube { border-color: #FF0000; color: #FF0000; }
-        .youtube:hover { border-color: #ffffff; color: #ffffff; transform: translateY(-3px); }
+        /* YouTube: Red -> White */
+        .youtube { color: #FF0000; border-bottom-color: rgba(255, 0, 0, 0.3); }
+        .youtube:hover { color: #ffffff; border-bottom-color: #ffffff; transform: scale(1.1); }
 
-        /* Адаптивность для мобилок */
-        @media (max-width: 480px) {
-            body { padding-top: 50px; }
-            h1 { font-size: 28px; }
-            .link-card { padding: 18px; font-size: 17px; }
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            .link-item { font-size: 28px; }
+            .avatar { width: 120px; height: 120px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="avatar"></div>
+    <a href="https://geragaraza.com/" class="avatar-link">
+        <div class="avatar"></div>
+    </a>
     
-    <h1>Herman Harazha</h1>
+    <a href="https://geragaraza.com/" class="name-link">
+        <h1>Herman Harazha</h1>
+    </a>
 
     <div class="links-container">
-        <a href="https://www.tiktok.com/@geragaraza" class="link-card tiktok">TikTok</a>
-        <a href="https://t.me/geragaraza" class="link-card telegram">Telegram</a>
-        <a href="https://www.instagram.com/geragaraza" class="link-card instagram">Instagram</a>
-        <a href="https://www.youtube.com/@geragaraza" class="link-card youtube">YouTube</a>
+        <a href="https://www.tiktok.com/@geragaraza" class="link-item tiktok">TikTok</a>
+        <a href="https://t.me/geragaraza" class="link-item telegram">Telegram</a>
+        <a href="https://www.instagram.com/geragaraza" class="link-item instagram">Instagram</a>
+        <a href="https://www.youtube.com/@geragaraza" class="link-item youtube">YouTube</a>
     </div>
 
 </body>
