@@ -29,23 +29,23 @@
       --bg:#000;
       --text:#fff;
 
-      /* DESKTOP */
-      --lift-d: 120px;
-      --avatar-d: 132px;
-      --name-d: 82px;
-      --email-d: 42px;
-      --social-d: 64px;
-      --copy-d: 18px;
+      /* РЫЧАГИ (главные настройки) */
+      --lift: clamp(28px, 7svh, 110px);    /* насколько сверху */
+      --maxw: 760px;                       /* ширина колонки */
 
-      /* MOBILE (<=600px) */
-      --lift-m: 9svh;
-      --avatar-m: 128px;
-      --name-m: 46px;
-      --email-m: 22px;
-      --social-m: 44px;
-      --copy-m: 16px;
+      --name:  clamp(44px, 6.2vw, 80px);
+      --email: clamp(20px, 3.2vw, 38px);
+      --social: clamp(40px, 5.2vw, 60px);
 
-      --underline: 3px;
+      --tapY: 12px;                        /* вертикальный паддинг клика */
+      --tapX: 16px;                        /* горизонтальный паддинг клика */
+      --gapEmail: 18px;                    /* отступ от почты до соцсетей */
+      --gapSocial: 14px;                   /* расстояние между соцсетями */
+
+      --u: 3px;                            /* толщина подчёркивания */
+      --uOffName: 0px;
+      --uOffEmail: 10px;
+      --uOffSocial: 12px;
     }
 
     *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -55,7 +55,7 @@
       color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",sans-serif;
       -webkit-font-smoothing:antialiased;
-      padding:0 20px 56px;
+      padding:0 20px 48px;
       display:flex;
       justify-content:flex-start;
       align-items:stretch;
@@ -63,9 +63,9 @@
 
     main{
       width:100%;
-      max-width:760px;
+      max-width:var(--maxw);
       margin:0 auto;
-      padding-top:var(--lift-d);
+      padding-top:var(--lift);
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -74,135 +74,114 @@
 
     a{color:inherit;text-decoration:none}
 
-    .avatar{
-      width:var(--avatar-d);
-      height:var(--avatar-d);
-      border-radius:50%;
-      overflow:hidden;
-      display:block;
-      margin-bottom:18px;
-    }
-    .avatar > div{
-      width:100%;
-      height:100%;
-      background:#fff;
-      border-radius:50%;
-    }
-
     .home{
       display:inline-block;
       max-width:100%;
     }
 
     h1{
-      font-size:var(--name-d);
+      font-size:var(--name);
       font-weight:900;
       letter-spacing:-2px;
       line-height:1.05;
-      margin-bottom:14px;
       white-space:nowrap;
-    }
-
-    .email-block{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:10px;
-      margin-top:2px;
+      margin-bottom:14px;
+      max-width:100%;
     }
 
     .email{
-      font-size:var(--email-d);
+      font-size:var(--email);
       font-weight:800;
       letter-spacing:-0.6px;
       white-space:nowrap;
       color:#00a6ff;
 
       text-decoration:underline;
-      text-underline-offset:10px;
-      text-decoration-thickness:var(--underline);
+      text-underline-offset:var(--uOffEmail);
+      text-decoration-thickness:var(--u);
       text-decoration-color:rgba(0,166,255,.45);
 
-      padding:14px 18px;         /* большой tap-target */
+      padding:var(--tapY) var(--tapX);
       border-radius:16px;
       display:inline-block;
-    }
-
-    .copy{
-      font-size:var(--copy-d);
-      font-weight:700;
-      letter-spacing:-0.2px;
-
-      padding:10px 14px;         /* тоже удобная зона */
-      border-radius:14px;
-
-      color:rgba(255,255,255,.88);
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      cursor:pointer;
+      user-select:text;
     }
 
     .socials{
-      margin-top:34px;
+      margin-top:var(--gapEmail);
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:18px;
+      gap:var(--gapSocial);
       width:100%;
     }
 
     .social{
-      font-size:var(--social-d);
+      font-size:var(--social);
       font-weight:800;
       letter-spacing:-1.5px;
       white-space:nowrap;
 
       text-decoration:underline;
-      text-underline-offset:12px;
-      text-decoration-thickness:var(--underline);
+      text-underline-offset:var(--uOffSocial);
+      text-decoration-thickness:var(--u);
 
-      padding:14px 18px;         /* большой tap-target */
+      padding:var(--tapY) var(--tapX);
       border-radius:16px;
       display:inline-block;
     }
 
-    .tiktok{color:#25F4EE;text-decoration-color:rgba(37,244,238,.30)}
-    .telegram{color:#0088CC;text-decoration-color:rgba(0,136,204,.30)}
-    .instagram{color:#6228d7;text-decoration-color:rgba(98,40,215,.30)}
-    .youtube{color:#FF0000;text-decoration-color:rgba(255,0,0,.30)}
+    /* Base colors + underline base */
+    .tiktok{color:#25F4EE; text-decoration-color:rgba(37,244,238,.30)}
+    .telegram{color:#0088CC; text-decoration-color:rgba(0,136,204,.30)}
+    .instagram{color:#6228d7; text-decoration-color:rgba(98,40,215,.30)}
+    .youtube{color:#FF0000; text-decoration-color:rgba(255,0,0,.30)}
 
-    /* Hover: ТОЛЬКО цвет текста (без увеличений/толщины) */
+    /* Hover: меняется и текст, и подчёркивание */
     @media (hover:hover) and (pointer:fine){
-      .email:hover{ color:#006ed1; }
-      .tiktok:hover{ color:#FE2C55; }
-      .telegram:hover{ color:#24A1DE; }
-      .instagram:hover{ color:#ee2a7b; }
-      .youtube:hover{ color:#ffffff; }
-      .copy:hover{ background:rgba(255,255,255,.08); }
+      .email:hover{
+        color:#006ed1;
+        text-decoration-color:#006ed1;
+      }
+
+      .tiktok:hover{ color:#FE2C55; text-decoration-color:#FE2C55; }
+      .telegram:hover{ color:#24A1DE; text-decoration-color:#24A1DE; }
+      .instagram:hover{ color:#ee2a7b; text-decoration-color:#ee2a7b; }
+      .youtube:hover{ color:#ffffff; text-decoration-color:#ffffff; }
     }
 
-    a:focus-visible, button:focus-visible{
+    a:focus-visible{
       outline:2px solid rgba(255,255,255,.65);
       outline-offset:6px;
       border-radius:18px;
     }
 
-    .email:active,.social:active,.copy:active{ transform:translateY(1px); }
+    .email:active,.social:active{ transform:translateY(1px); }
 
+    /* Mobile: делаем ещё крупнее и чуть плотнее по вертикали */
     @media (max-width:600px){
-      main{ padding-top:var(--lift-m); }
-      .avatar{ width:var(--avatar-m); height:var(--avatar-m); margin-bottom:16px; }
-      h1{ font-size:var(--name-m); letter-spacing:-1.6px; }
-      .email{ font-size:var(--email-m); text-underline-offset:8px; padding:14px 16px; }
-      .copy{ font-size:var(--copy-m); padding:10px 14px; }
-      .social{ font-size:var(--social-m); padding:14px 16px; }
-      .socials{ margin-top:28px; gap:16px; }
+      :root{
+        --lift: clamp(22px, 6.5svh, 90px);
+        --name:  clamp(46px, 10.5vw, 70px);
+        --email: clamp(22px, 6.0vw, 34px);
+        --social: clamp(42px, 11.0vw, 58px);
+        --tapY: 14px;
+        --gapEmail: 16px;
+        --gapSocial: 12px;
+        --uOffEmail: 8px;
+        --uOffSocial: 10px;
+      }
+      h1{ letter-spacing:-1.6px; margin-bottom:12px; }
     }
 
+    /* Очень узкие экраны: страховка, чтобы имя/почта не ломались */
     @media (max-width:360px){
-      /* страховка от очень узких экранов, чтобы ничего не ушло в 2 строки */
-      :root{ --name-m: 42px; --email-m: 20px; --social-m: 40px; }
-      h1{ letter-spacing:-1.3px; }
+      :root{
+        --name: 44px;
+        --email: 20px;
+        --social: 40px;
+      }
+      h1{ letter-spacing:-1.2px; }
     }
 
     .toast{
@@ -225,77 +204,47 @@
       -webkit-backdrop-filter:blur(10px);
     }
     .toast.show{opacity:1}
+
+    @media (prefers-reduced-motion: reduce){
+      .toast{ transition:none; }
+      .email:active,.social:active{ transform:none; }
+    }
   </style>
 </head>
 
 <body>
   <main>
-    <a class="avatar" href="https://geragaraza.com/" aria-label="Home">
-      <div aria-hidden="true"></div>
-    </a>
-
     <a class="home" href="https://geragaraza.com/" aria-label="Home">
       <h1>Herman Harazha</h1>
     </a>
 
-    <div class="email-block">
-      <a
-        class="email scramble-target"
-        href="mailto:Geragaraza@gmail.com"
-        data-email="Geragaraza@gmail.com"
-        aria-label="Email: Geragaraza@gmail.com"
-      >Geragaraza@gmail.com</a>
-
-      <button class="copy" type="button" id="copyBtn" aria-label="Copy email">Copy</button>
-    </div>
+    <a
+      class="email"
+      href="mailto:Geragaraza@gmail.com"
+      data-email="Geragaraza@gmail.com"
+      aria-label="Email: Geragaraza@gmail.com"
+      id="emailLink"
+    >Geragaraza@gmail.com</a>
 
     <div class="socials" aria-label="Social links">
-      <a class="social tiktok scramble-target" href="https://www.tiktok.com/@geragaraza" aria-label="TikTok">TikTok</a>
-      <a class="social telegram scramble-target" href="https://t.me/geragaraza" aria-label="Telegram">Telegram</a>
-      <a class="social instagram scramble-target" href="https://www.instagram.com/geragaraza" aria-label="Instagram">Instagram</a>
-      <a class="social youtube scramble-target" href="https://www.youtube.com/@geragaraza" aria-label="YouTube">YouTube</a>
+      <a class="social tiktok" href="https://www.tiktok.com/@geragaraza" aria-label="TikTok">TikTok</a>
+      <a class="social telegram" href="https://t.me/geragaraza" aria-label="Telegram">Telegram</a>
+      <a class="social instagram" href="https://www.instagram.com/geragaraza" aria-label="Instagram">Instagram</a>
+      <a class="social youtube" href="https://www.youtube.com/@geragaraza" aria-label="YouTube">YouTube</a>
     </div>
   </main>
 
-  <div class="toast" id="toast">Copied</div>
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
 
   <script>
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    function scramble(el){
-      if (reduceMotion) return;
-
-      const original = el.dataset.original || el.textContent;
-      el.dataset.original = original;
-
-      const duration = 480;
-      const interval = 20;
-      const ticks = Math.max(1, Math.floor(duration / interval));
-      const step = original.length / ticks;
-
-      let i = 0;
-      const id = setInterval(() => {
-        el.textContent = original.split("").map((ch, idx) => {
-          if (!/[A-Za-z]/.test(ch)) return ch;
-          if (idx < i) return original[idx];
-          return letters[(Math.random() * letters.length) | 0];
-        }).join("");
-
-        i += step;
-        if (i >= original.length) {
-          el.textContent = original;
-          clearInterval(id);
-        }
-      }, interval);
-    }
+    const emailEl = document.getElementById("emailLink");
+    const toast = document.getElementById("toast");
 
     function showToast(text){
-      const t = document.getElementById("toast");
-      t.textContent = text;
-      t.classList.add("show");
+      toast.textContent = text;
+      toast.classList.add("show");
       clearTimeout(showToast._id);
-      showToast._id = setTimeout(() => t.classList.remove("show"), 900);
+      showToast._id = setTimeout(() => toast.classList.remove("show"), 900);
     }
 
     async function copyText(text){
@@ -321,23 +270,32 @@
       }
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".scramble-target").forEach(scramble);
+    function swapEmailText(temp, ms){
+      const original = emailEl.dataset.original || emailEl.textContent;
+      emailEl.dataset.original = original;
+      emailEl.textContent = temp;
+      clearTimeout(swapEmailText._id);
+      swapEmailText._id = setTimeout(() => {
+        emailEl.textContent = original;
+      }, ms);
+    }
 
-      const email = document.querySelector(".email").dataset.email;
-      const btn = document.getElementById("copyBtn");
+    emailEl.addEventListener("click", async (e) => {
+      e.preventDefault();
 
-      btn.addEventListener("click", async () => {
-        const ok = await copyText(email);
-        showToast(ok ? "Copied" : "Copy failed");
-        if (navigator.vibrate) navigator.vibrate(10);
-      });
+      const email = emailEl.dataset.email || emailEl.textContent.trim();
+      const ok = await copyText(email);
 
-      document.querySelectorAll("a,button").forEach((el) => {
-        el.addEventListener("pointerdown", () => {
-          if (navigator.vibrate) navigator.vibrate(8);
-        }, { passive: true });
-      });
+      if (ok) {
+        swapEmailText("Copied", 1200);
+        showToast("Copied");
+        if (navigator.vibrate) navigator.vibrate(8);
+      } else {
+        showToast("Copy failed");
+      }
+
+      // Если захочешь “копировать И открыть почту”:
+      // window.location.href = "mailto:" + encodeURIComponent(email);
     });
   </script>
 </body>
