@@ -5,79 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gera Harazha (Herman Harazha)</title>
     <style>
+        :root {
+            --bg-color: #000000;
+            --text-primary: #ffffff;
+        }
+
         body {
-            background-color: #000000; /* Сплошной черный */
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            /* Используем шрифт Apple */
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* Смещаем наверх */
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
+            padding: 80px 20px 40px; /* Большой отступ сверху */
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background-color: #ffffff; /* Белая аватарка */
+            border-radius: 50%;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
 
         h1 {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 40px;
+            font-size: 32px; /* Увеличенный размер */
+            font-weight: 700;
+            margin: 0 0 48px;
             letter-spacing: -0.5px;
         }
 
         .links-container {
             width: 100%;
-            max-width: 360px;
+            max-width: 480px; /* Увеличили ширину контейнера для ПК */
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
         }
 
         .link-card {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
-            border: 1.5px solid; /* Толщина рамки */
-            border-radius: 12px;
+            padding: 22px; /* Массивные кнопки */
+            border: 2px solid; 
+            border-radius: 18px; /* Более мягкие углы */
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
-            transition: transform 0.1s ease, opacity 0.2s ease;
+            font-size: 19px; /* Крупный текст */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background: transparent;
         }
 
-        /* Настройка цветов для каждой кнопки из твоего списка */
-        .instagram {
-            border-color: #708dff;
-            color: #708dff;
-        }
+        /* Настройка цветов по твоим HEX */
+        
+        /* TikTok */
+        .tiktok { border-color: #25F4EE; color: #25F4EE; }
+        .tiktok:hover { border-color: #FE2C55; color: #FE2C55; transform: translateY(-3px); }
 
-        .tiktok {
-            border-color: #fe2c55;
-            color: #fe2c55;
-        }
+        /* Telegram */
+        .telegram { border-color: #0088CC; color: #0088CC; }
+        .telegram:hover { border-color: #24A1DE; color: #24A1DE; transform: translateY(-3px); }
 
-        .youtube {
-            border-color: #ff0032;
-            color: #ff0032;
-        }
+        /* Instagram */
+        .instagram { border-color: #6228d7; color: #6228d7; }
+        .instagram:hover { border-color: #ee2a7b; color: #ee2a7b; transform: translateY(-3px); }
 
-        /* Эффект при нажатии */
-        .link-card:active {
-            transform: scale(0.98);
-            opacity: 0.8;
+        /* YouTube */
+        .youtube { border-color: #FF0000; color: #FF0000; }
+        .youtube:hover { border-color: #ffffff; color: #ffffff; transform: translateY(-3px); }
+
+        /* Адаптивность для мобилок */
+        @media (max-width: 480px) {
+            body { padding-top: 50px; }
+            h1 { font-size: 28px; }
+            .link-card { padding: 18px; font-size: 17px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="avatar"></div>
+    
     <h1>Herman Harazha</h1>
 
     <div class="links-container">
-        <a href="https://www.instagram.com/geragaraza/" class="link-card instagram">Instagram</a>
         <a href="https://www.tiktok.com/@geragaraza" class="link-card tiktok">TikTok</a>
-        <a href="https://www.youtube.com/channel/UC0gms2Ej4hVSf8tcV-IHfYg" class="link-card youtube">YouTube</a>
+        <a href="https://t.me/geragaraza" class="link-card telegram">Telegram</a>
+        <a href="https://www.instagram.com/geragaraza" class="link-card instagram">Instagram</a>
+        <a href="https://www.youtube.com/@geragaraza" class="link-card youtube">YouTube</a>
     </div>
 
 </body>
