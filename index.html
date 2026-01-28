@@ -7,8 +7,8 @@
     
     <link rel="icon" href="favicon.png" type="image/png">
     
-    <meta property="og:title" content="Herman Harazha">
-    <meta property="og:description" content="Geragaraza">
+    <meta property="og:title" content="Geragaraza">
+    <meta property="og:description" content="Herman Harazha links">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://geragaraza.com/">
     <meta property="og:image" content="https://geragaraza.com/og-image.jpg">
@@ -22,28 +22,19 @@
             /* --- ЦВЕТА --- */
             --mail-main: #00a9ff;
             --mail-hover: #006dd0;
-
             --tt-main: #25F4EE;
             --tt-hover: #FE2C55;
-
             --tg-main: #0088CC;
             --tg-hover: #24A1DE;
-
             --yt-main: #FF0000;
             --yt-hover: #ffffff;
-
             --inst-main: #6c45ef;
             --inst-hover: #ffd603;
-
-            /* Pinterest (Swapped) */
-            --pin-main: #e60022; /* Красный основной */
-            --pin-hover: #ffffff; /* Белый при наведении */
+            --pin-main: #e60022;
+            --pin-hover: #ffffff;
 
             /* --- РАЗМЕРЫ --- */
-            /* Avatar */
             --avatar-size: clamp(100px, 24vw, 150px);
-            
-            /* Text Sizes */
             --font-name: clamp(36px, 11vw, 80px);
             --font-mail: clamp(22px, 6.5vw, 42px);
             --font-social: clamp(34px, 11.5vw, 80px); 
@@ -61,15 +52,12 @@
             background-color: var(--bg-color);
             color: var(--text-white);
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
-            
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            
-            padding-top: 4vh; 
-            padding-bottom: 4vh;
-            
+            padding-top: 5vh; /* Максимально приподнято */
+            padding-bottom: 5vh;
             min-height: 100vh;
             width: 100%;
             overflow-x: hidden;
@@ -87,16 +75,12 @@
             padding: 2px 10px; 
         }
 
-        .zoom-effect:hover {
-            transform: scale(1.05);
-        }
+        /* Зум только для почты и соцсетей */
+        .zoom-effect:hover { transform: scale(1.05); }
         
-        a:active {
-            transform: scale(0.95);
-            opacity: 0.8;
-        }
+        a:active { transform: scale(0.95); opacity: 0.8; }
 
-        /* --- 1. АВАТАРКА --- */
+        /* --- АВАТАРКА --- */
         .avatar-circle {
             display: block;
             width: var(--avatar-size);
@@ -105,10 +89,9 @@
             background-color: #ffffff;
             margin-bottom: var(--gap-avatar-name);
             flex-shrink: 0;
-            cursor: pointer;
         }
 
-        /* --- 2. ИМЯ --- */
+        /* --- ИМЯ --- */
         .name-link h1 {
             font-size: var(--font-name);
             font-weight: 800;
@@ -116,12 +99,9 @@
             color: var(--text-white);
             line-height: 1.1;
         }
-        .name-link {
-            margin-bottom: var(--gap-name-mail);
-            padding-bottom: 0;
-        }
+        .name-link { margin-bottom: var(--gap-name-mail); }
 
-        /* --- 3. ПОЧТА --- */
+        /* --- ПОЧТА --- */
         .mail-link {
             font-size: var(--font-mail);
             font-weight: 600;
@@ -132,7 +112,7 @@
         }
         .mail-link:hover { color: var(--mail-hover); }
 
-        /* --- 4. СОЦСЕТИ --- */
+        /* --- СОЦСЕТИ --- */
         .social-container {
             display: flex;
             flex-direction: column;
@@ -140,7 +120,6 @@
             gap: var(--gap-socials);
             width: 100%;
         }
-
         .social-item {
             font-size: var(--font-social);
             font-weight: 800;
@@ -148,22 +127,11 @@
             padding: 4px 15px;
         }
 
-        /* Colors */
-        .tiktok { color: var(--tt-main); }
-        .tiktok:hover { color: var(--tt-hover); }
-
-        .telegram { color: var(--tg-main); }
-        .telegram:hover { color: var(--tg-hover); }
-
-        .youtube { color: var(--yt-main); }
-        .youtube:hover { color: var(--yt-hover); }
-
-        .instagram { color: var(--inst-main); }
-        .instagram:hover { color: var(--inst-hover); }
-
-        .pinterest { color: var(--pin-main); }
-        .pinterest:hover { color: var(--pin-hover); }
-
+        .tiktok { color: var(--tt-main); } .tiktok:hover { color: var(--tt-hover); }
+        .telegram { color: var(--tg-main); } .telegram:hover { color: var(--tg-hover); }
+        .youtube { color: var(--yt-main); } .youtube:hover { color: var(--yt-hover); }
+        .instagram { color: var(--inst-main); } .instagram:hover { color: var(--inst-hover); }
+        .pinterest { color: var(--pin-main); } .pinterest:hover { color: var(--pin-hover); }
     </style>
 </head>
 <body>
@@ -185,21 +153,15 @@
     </nav>
 
     <script>
-        // --- SCRAMBLE (0.5 SEC) ---
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        
         function runScramble(el) {
             const originalText = el.innerText;
             let iteration = 0;
-            
             const interval = setInterval(() => {
-                el.innerText = originalText.split("")
-                    .map((letter, index) => {
-                        if(index < iteration) return originalText[index];
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    })
-                    .join("");
-                
+                el.innerText = originalText.split("").map((letter, index) => {
+                    if(index < iteration) return originalText[index];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join("");
                 if(iteration >= originalText.length) {
                     clearInterval(interval);
                     el.innerText = originalText;
@@ -212,17 +174,12 @@
             document.querySelectorAll('.scramble-target').forEach(el => runScramble(el));
         });
 
-        // --- COPY EMAIL ---
         function copyEmail(element) {
             const email = "Geragaraza@gmail.com";
-            
             if (navigator.vibrate) navigator.vibrate(15);
-
             navigator.clipboard.writeText(email).then(() => {
                 element.innerText = "Copied";
-                setTimeout(() => {
-                    element.innerText = email;
-                }, 1000);
+                setTimeout(() => { element.innerText = email; }, 1000);
             }).catch(console.error);
         }
     </script>
