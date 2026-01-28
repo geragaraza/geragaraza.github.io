@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Geragaraza</title>
+    <title>Herman Harazha | Links</title>
     
     <link rel="icon" href="icon.png" type="image/png">
     
-    <meta property="og:title" content="Geragaraza">
-    <meta property="og:description" content="Herman Harazha links">
+    <meta name="description" content="Official links and contact information for Herman Harazha.">
+    <meta name="keywords" content="Herman Harazha, Geragaraza, Links, Social Media">
+    <meta name="theme-color" content="#000000">
+
+    <meta property="og:title" content="Herman Harazha | Links">
+    <meta property="og:description" content="Connect with me on social media or reach out via email.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://geragaraza.com/">
-    
-    <meta property="og:image" content="https://geragaraza.com/preview.png">
-    <meta name="theme-color" content="#000000">
+    <meta property="og:image" content="https://geragaraza.com/preview.png?v=final">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Herman Harazha | Links">
+    <meta name="twitter:description" content="Official links and social media channels.">
+    <meta name="twitter:image" content="https://geragaraza.com/preview.png?v=final">
 
     <style>
         :root {
@@ -31,14 +38,14 @@
             /* РАЗМЕРЫ */
             --avatar-size: clamp(100px, 24vw, 150px);
             --font-name: clamp(36px, 11vw, 80px);
-            --font-mail: clamp(24px, 7vw, 46px); /* Чуть увеличил почту */
+            --font-mail: clamp(24px, 7vw, 46px);
             --font-social: clamp(34px, 11.5vw, 80px); 
             
             /* ОТСТУПЫ */
             --gap-avatar-name: 20px;
-            --gap-name-mail: 6px;       /* Близко к имени */
-            --gap-blocks: 5vh;          /* Воздух перед соцсетями */
-            --gap-socials: 6px;         /* Соцсети плотно */
+            --gap-name-mail: 6px;
+            --gap-blocks: 5vh;
+            --gap-socials: 6px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -142,9 +149,7 @@
         }
 
         window.addEventListener('load', () => {
-            // Быстрый перебор для почты
             document.querySelectorAll('.scramble-target-fast').forEach(el => runScramble(el, 250));
-            // Плавный перебор для соцсетей
             document.querySelectorAll('.scramble-target-slow').forEach(el => runScramble(el, 500));
         });
 
