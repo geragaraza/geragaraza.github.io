@@ -31,31 +31,31 @@
             justify-content: flex-start;
             min-height: 100vh;
             margin: 0;
-            padding: 8vh 20px;
+            padding: 7vh 20px;
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
             animation: reveal 0.5s ease-out;
         }
 
-        /* Аватарка: 100px, белая, без ховеров */
-        .avatar {
-            width: 100px;
-            height: 100px;
-            background-color: #ffffff;
+        /* Аватарка теперь через IMG, никаких лишних стилей */
+        .avatar-img {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             margin-bottom: 25px;
+            display: block;
         }
 
-        /* Имя: заголовок без подчеркиваний и эффектов */
         .name-link {
             text-decoration: none;
             color: white;
             cursor: pointer;
         }
+
         h1 {
-            font-size: 58px;
+            font-size: 62px; /* Чуть увеличил для баланса */
             font-weight: 800;
-            margin: 0 0 50px;
+            margin: 0 0 55px;
             letter-spacing: -2px;
             line-height: 1;
         }
@@ -66,51 +66,49 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 35px;
         }
 
-        /* Ссылки с подчеркиванием */
         .link-item {
             text-decoration: underline;
-            text-underline-offset: 10px; /* Отступ подчеркивания */
-            text-decoration-thickness: 2px; /* Толщина линии */
+            text-underline-offset: 12px;
+            text-decoration-thickness: 2px;
             font-weight: 700;
-            font-size: 42px;
+            font-size: 44px; /* Еще мощнее */
             letter-spacing: -1px;
             transition: all 0.2s ease;
             width: fit-content;
         }
 
-        /* Эффект при наведении на соцсеть */
         .link-item:hover {
             transform: scale(1.02);
-            text-decoration-thickness: 4px; /* Линия становится жирнее */
+            text-decoration-thickness: 5px;
         }
 
-        /* Цвета по твоим HEX */
-        .tiktok { color: #25F4EE; text-decoration-color: rgba(37, 244, 238, 0.4); }
+        /* Цвета соцсетей */
+        .tiktok { color: #25F4EE; text-decoration-color: rgba(37, 244, 238, 0.3); }
         .tiktok:hover { color: #FE2C55; text-decoration-color: #FE2C55; }
 
-        .telegram { color: #0088CC; text-decoration-color: rgba(0, 136, 204, 0.4); }
+        .telegram { color: #0088CC; text-decoration-color: rgba(0, 136, 204, 0.3); }
         .telegram:hover { color: #24A1DE; text-decoration-color: #24A1DE; }
 
-        .instagram { color: #6228d7; text-decoration-color: rgba(98, 40, 215, 0.4); }
+        .instagram { color: #6228d7; text-decoration-color: rgba(98, 40, 215, 0.3); }
         .instagram:hover { color: #ee2a7b; text-decoration-color: #ee2a7b; }
 
-        .youtube { color: #FF0000; text-decoration-color: rgba(255, 0, 0, 0.4); }
+        .youtube { color: #FF0000; text-decoration-color: rgba(255, 0, 0, 0.3); }
         .youtube:hover { color: #ffffff; text-decoration-color: #ffffff; }
 
         @media (max-width: 600px) {
-            h1 { font-size: 44px; }
-            .link-item { font-size: 34px; text-underline-offset: 8px; }
-            .avatar { width: 90px; height: 90px; }
+            h1 { font-size: 46px; }
+            .link-item { font-size: 34px; }
+            .avatar-img { width: 90px; height: 90px; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://geragaraza.com/" class="name-link">
-        <div class="avatar"></div>
+    <a href="https://geragaraza.com/">
+        <img src="avatar.png" alt="Avatar" class="avatar-img">
     </a>
     
     <a href="https://geragaraza.com/" class="name-link">
