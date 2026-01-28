@@ -11,7 +11,7 @@
     <meta property="og:description" content="Herman Harazha Links">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://geragaraza.com/">
-    <meta property="og:image" content="https://geragaraza.com/og-image.jpg?v=2">
+    <meta property="og:image" content="https://geragaraza.com/og-image.png?v=4">
     <meta name="theme-color" content="#000000">
 
     <style>
@@ -19,114 +19,77 @@
             --bg-color: #000000;
             --text-white: #ffffff;
             
-            /* --- ЦВЕТА (Твои настройки) --- */
-            --mail-main: #00a9ff;
-            --mail-hover: #006dd0;
-            --tt-main: #25F4EE;
-            --tt-hover: #FE2C55;
-            --tg-main: #0088CC;
-            --tg-hover: #24A1DE;
-            --yt-main: #FF0000;
-            --yt-hover: #ffffff;
-            --inst-main: #6c45ef;
-            --inst-hover: #ffd603;
-            --pin-main: #e60022;
-            --pin-hover: #ffffff;
+            /* ЦВЕТА */
+            --mail-main: #00a9ff; --mail-hover: #006dd0;
+            --tt-main: #25F4EE; --tt-hover: #FE2C55;
+            --tg-main: #0088CC; --tg-hover: #24A1DE;
+            --yt-main: #FF0000; --yt-hover: #ffffff;
+            --inst-main: #6c45ef; --inst-hover: #ffd603;
+            --pin-main: #e60022; --pin-hover: #ffffff;
 
-            /* --- РАЗМЕРЫ (Адаптивные) --- */
+            /* РАЗМЕРЫ */
             --avatar-size: clamp(100px, 24vw, 150px);
             --font-name: clamp(36px, 11vw, 80px);
             --font-mail: clamp(22px, 6.5vw, 42px);
             --font-social: clamp(34px, 11.5vw, 80px); 
             
-            /* --- ОТСТУПЫ (Максимальная плотность) --- */
+            /* ОТСТУПЫ */
             --gap-avatar-name: 20px;
-            --gap-name-mail: 4px;
-            --gap-blocks: 4vh;
-            --gap-socials: 4px;
+            --gap-name-mail: 4px;       /* Почта придвинута к имени */
+            --gap-blocks: 4vh;          /* Блок соцсетей отдельно */
+            --gap-socials: 4px;         /* Соцсети плотно */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
+        
         body {
-            background-color: var(--bg-color);
-            color: var(--text-white);
+            background-color: var(--bg-color); color: var(--text-white);
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 5vh; 
-            padding-bottom: 5vh;
-            min-height: 100vh;
-            width: 100%;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            padding-top: 5vh; padding-bottom: 5vh;
+            min-height: 100vh; width: 100%; overflow-x: hidden; -webkit-font-smoothing: antialiased;
         }
 
         a {
-            text-decoration: none;
-            cursor: pointer;
-            white-space: nowrap;
+            text-decoration: none; cursor: pointer; white-space: nowrap;
             transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.2s ease;
-            user-select: none;
-            display: block;
-            text-align: center;
-            width: fit-content;
-            padding: 2px 10px; 
+            user-select: none; display: block; text-align: center; width: fit-content; padding: 2px 10px; 
         }
 
-        /* Эффект увеличения только для кликабельных ссылок */
+        /* Статичные ссылки (Аватар и Имя) */
+        .static-link { transform: none !important; }
+
+        /* Зум только для кнопок связи */
         .zoom-effect:hover { transform: scale(1.05); }
         a:active { transform: scale(0.95); opacity: 0.8; }
 
-        /* --- АВАТАРКА --- */
         .avatar-circle {
-            display: block;
-            width: var(--avatar-size);
-            height: var(--avatar-size);
-            border-radius: 50%;
-            background-color: #ffffff;
-            margin-bottom: var(--gap-avatar-name);
-            flex-shrink: 0;
+            display: block; width: var(--avatar-size); height: var(--avatar-size);
+            border-radius: 50%; background-color: #ffffff;
+            margin-bottom: var(--gap-avatar-name); flex-shrink: 0;
         }
 
-        /* --- ИМЯ --- */
         .name-link h1 {
-            font-size: var(--font-name);
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            color: var(--text-white);
-            line-height: 1.1;
+            font-size: var(--font-name); font-weight: 800; letter-spacing: -1.5px;
+            color: var(--text-white); line-height: 1.1;
         }
         .name-link { margin-bottom: var(--gap-name-mail); }
 
-        /* --- ПОЧТА --- */
         .mail-link {
-            font-size: var(--font-mail);
-            font-weight: 600;
-            color: var(--mail-main);
-            letter-spacing: -0.5px;
-            margin-bottom: var(--gap-blocks);
-            padding: 5px 20px;
+            font-size: var(--font-mail); font-weight: 600; color: var(--mail-main);
+            letter-spacing: -0.5px; margin-bottom: var(--gap-blocks); padding: 5px 20px;
         }
         .mail-link:hover { color: var(--mail-hover); }
 
-        /* --- СОЦСЕТИ --- */
         .social-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--gap-socials);
-            width: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            gap: var(--gap-socials); width: 100%;
         }
         .social-item {
-            font-size: var(--font-social);
-            font-weight: 800;
-            letter-spacing: -1px;
-            padding: 4px 15px;
+            font-size: var(--font-social); font-weight: 800; letter-spacing: -1px; padding: 4px 15px;
         }
 
+        /* Цвета */
         .tiktok { color: var(--tt-main); } .tiktok:hover { color: var(--tt-hover); }
         .telegram { color: var(--tg-main); } .telegram:hover { color: var(--tg-hover); }
         .youtube { color: var(--yt-main); } .youtube:hover { color: var(--yt-hover); }
@@ -136,9 +99,9 @@
 </head>
 <body>
 
-    <a href="https://geragaraza.com/" class="avatar-circle"></a>
+    <a href="https://geragaraza.com/" class="avatar-circle static-link"></a>
 
-    <a href="https://geragaraza.com/" class="name-link">
+    <a href="https://geragaraza.com/" class="name-link static-link">
         <h1>Herman Harazha</h1>
     </a>
 
@@ -158,9 +121,8 @@
         function runScramble(el, duration) {
             const originalText = el.innerText;
             let iteration = 0;
-            const intervalTime = 25; 
-            const totalSteps = duration / intervalTime;
-            const stepIncrement = originalText.length / totalSteps;
+            const intervalTime = 25;
+            const stepIncrement = originalText.length / (duration / intervalTime);
 
             const interval = setInterval(() => {
                 el.innerText = originalText.split("").map((letter, index) => {
@@ -177,9 +139,7 @@
         }
 
         window.addEventListener('load', () => {
-            // Почта: 250мс
             document.querySelectorAll('.scramble-target-fast').forEach(el => runScramble(el, 250));
-            // Соцсети: 500мс
             document.querySelectorAll('.scramble-target-slow').forEach(el => runScramble(el, 500));
         });
 
