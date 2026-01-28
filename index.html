@@ -1,263 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Geragaraza</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Geragaraza (Herman Harazha)</title>
+    
+    <link rel="icon" href="favicon.png" type="image/png">
+    
+    <meta property="og:title" content="Herman Harazha">
+    <meta property="og:description" content="Contact & Social Links">
+    <meta property="og:image" content="preview.jpg">
+    <meta property="og:type" content="website">
 
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="canonical" href="https://geragaraza.com/" />
+    <style>
+        :root {
+            /* --- ЦВЕТОВАЯ ПАЛИТРА --- */
+            --bg-color: #000000;
+            --text-white: #ffffff;
+            --accent-gray: rgba(255, 255, 255, 0.4);
+            --mail-color: #0A84FF; /* iOS Blue */
+            
+            /* --- РАЗМЕРЫ (МАТЕМАТИКА) --- */
+            /* clamp(мин, идеал, макс) - гарантирует, что текст не станет слишком мелким или слишком огромным */
+            
+            /* Имя: 100% доминанта. На мобильных ~32-34px, на ПК до 72px */
+            --font-name: clamp(32px, 5vw, 72px);
+            
+            /* Почта: ~60-70% от имени. Достаточно крупно для пальца */
+            --font-mail: clamp(20px, 3vw, 42px);
+            
+            /* Соцсети: ~90% от имени. Крупные, массивные */
+            --font-social: clamp(28px, 4.5vw, 64px);
+            
+            /* Кнопка копирования: маленькая техническая подпись */
+            --font-copy: clamp(12px, 1.5vw, 18px);
 
-  <meta name="theme-color" content="#000000" />
-  <meta name="color-scheme" content="dark" />
-  <meta name="description" content="Herman Harazha links" />
-
-  <meta property="og:title" content="Geragaraza" />
-  <meta property="og:description" content="Herman Harazha links" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://geragaraza.com/" />
-  <meta property="og:image" content="https://geragaraza.com/preview.png?v=2" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Geragaraza" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Geragaraza" />
-  <meta name="twitter:description" content="Herman Harazha links" />
-  <meta name="twitter:image" content="https://geragaraza.com/preview.png?v=2" />
-
-  <style>
-    :root{
-      --bg:#000;
-      --text:#fff;
-
-      --lift: clamp(22px, 6.2svh, 96px);
-      --maxw: 760px;
-
-      --name:  clamp(44px, 6.2vw, 80px);
-      --email: clamp(22px, 3.4vw, 40px);
-      --social: clamp(40px, 5.2vw, 60px);
-
-      --tapY: 12px;       /* click area height */
-      --tapX: 16px;       /* click area width */
-
-      --gapNameToEmail: 8px;
-      --gapHeaderToLinks: 18px; /* separation between header block and links */
-      --gapLinks: 10px;         /* equal spacing between links */
-
-      --u: 3px;
-      --uOffEmail: 10px;
-      --uOffSocial: 12px;
-    }
-
-    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    body{
-      min-height:100svh;
-      background:var(--bg);
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",sans-serif;
-      -webkit-font-smoothing:antialiased;
-      padding:0 20px 44px;
-      display:flex;
-      justify-content:flex-start;
-      align-items:stretch;
-    }
-
-    main{
-      width:100%;
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding-top:var(--lift);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-    }
-
-    a{color:inherit;text-decoration:none}
-
-    .home{
-      display:inline-block;
-      max-width:100%;
-    }
-
-    h1{
-      font-size:var(--name);
-      font-weight:900;
-      letter-spacing:-2px;
-      line-height:1.05;
-      white-space:nowrap;
-      margin-bottom:var(--gapNameToEmail);
-      max-width:100%;
-    }
-
-    .email{
-      font-size:var(--email);
-      font-weight:800;
-      letter-spacing:-0.6px;
-      white-space:nowrap;
-      color:#00a6ff;
-
-      text-decoration:underline;
-      text-underline-offset:var(--uOffEmail);
-      text-decoration-thickness:var(--u);
-      text-decoration-color:rgba(0,166,255,.45);
-
-      padding:var(--tapY) var(--tapX);
-      border-radius:16px;
-      display:inline-block;
-      user-select:text;
-    }
-
-    .socials{
-      margin-top:var(--gapHeaderToLinks);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:var(--gapLinks);
-      width:100%;
-    }
-
-    .social{
-      font-size:var(--social);
-      font-weight:800;
-      letter-spacing:-1.5px;
-      white-space:nowrap;
-
-      text-decoration:underline;
-      text-underline-offset:var(--uOffSocial);
-      text-decoration-thickness:var(--u);
-
-      padding:var(--tapY) var(--tapX);
-      border-radius:16px;
-      display:inline-block;
-    }
-
-    .tiktok{color:#25F4EE; text-decoration-color:rgba(37,244,238,.30)}
-    .telegram{color:#0088CC; text-decoration-color:rgba(0,136,204,.30)}
-    .instagram{color:#6228d7; text-decoration-color:rgba(98,40,215,.30)}
-    .youtube{color:#FF0000; text-decoration-color:rgba(255,0,0,.30)}
-
-    @media (hover:hover) and (pointer:fine){
-      .email:hover{ color:#006ed1; text-decoration-color:#006ed1; }
-
-      .tiktok:hover{ color:#FE2C55; text-decoration-color:#FE2C55; }
-      .telegram:hover{ color:#24A1DE; text-decoration-color:#24A1DE; }
-      .instagram:hover{ color:#ee2a7b; text-decoration-color:#ee2a7b; }
-      .youtube:hover{ color:#ffffff; text-decoration-color:#ffffff; }
-    }
-
-    a:focus-visible{
-      outline:2px solid rgba(255,255,255,.65);
-      outline-offset:6px;
-      border-radius:18px;
-    }
-
-    .email:active,.social:active{ transform:translateY(1px); }
-
-    @media (max-width:600px){
-      :root{
-        --lift: clamp(18px, 5.4svh, 80px);
-
-        --name:  clamp(46px, 10.5vw, 72px);
-        --email: clamp(24px, 6.3vw, 38px);
-        --social: clamp(42px, 11.0vw, 60px);
-
-        --tapY: 14px;              /* keep it fat-finger friendly */
-        --gapNameToEmail: 6px;
-        --gapHeaderToLinks: 14px;
-        --gapLinks: 8px;
-
-        --uOffEmail: 8px;
-        --uOffSocial: 10px;
-      }
-      h1{ letter-spacing:-1.6px; }
-    }
-
-    @media (max-width:360px){
-      :root{
-        --name: 44px;
-        --email: 22px;
-        --social: 40px;
-      }
-      h1{ letter-spacing:-1.2px; }
-    }
-  </style>
-</head>
-
-<body>
-  <main>
-    <a class="home" href="https://geragaraza.com/" aria-label="Home">
-      <h1>Herman Harazha</h1>
-    </a>
-
-    <a
-      class="email"
-      href="mailto:Geragaraza@gmail.com"
-      data-email="Geragaraza@gmail.com"
-      aria-label="Email: Geragaraza@gmail.com"
-      id="emailLink"
-    >Geragaraza@gmail.com</a>
-
-    <div class="socials" aria-label="Social links">
-      <a class="social tiktok" href="https://www.tiktok.com/@geragaraza" aria-label="TikTok">TikTok</a>
-      <a class="social telegram" href="https://t.me/geragaraza" aria-label="Telegram">Telegram</a>
-      <a class="social instagram" href="https://www.instagram.com/geragaraza" aria-label="Instagram">Instagram</a>
-      <a class="social youtube" href="https://www.youtube.com/@geragaraza" aria-label="YouTube">YouTube</a>
-    </div>
-  </main>
-
-  <script>
-    const emailEl = document.getElementById("emailLink");
-
-    async function copyText(text){
-      try{
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(text);
-          return true;
+            /* --- ОТСТУПЫ --- */
+            --spacing-top: 15vh;        /* Высота от верха экрана (поднято вверх) */
+            --gap-name-mail: 8px;       /* Расстояние Имя <-> Почта (плотно) */
+            --gap-mail-copy: 12px;      /* Расстояние Почта <-> Кнопка Copy */
+            --gap-blocks: 50px;         /* Расстояние Блок контактов <-> Соцсети */
+            --gap-socials: 12px;        /* Расстояние МЕЖДУ соцсетями (плотно) */
         }
-      }catch(_){}
-      try{
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.setAttribute("readonly", "");
-        ta.style.position = "fixed";
-        ta.style.left = "-9999px";
-        document.body.appendChild(ta);
-        ta.select();
-        const ok = document.execCommand("copy");
-        document.body.removeChild(ta);
-        return ok;
-      }catch(_){
-        return false;
-      }
-    }
 
-    function swapEmailText(temp, ms){
-      const original = emailEl.dataset.original || emailEl.textContent;
-      emailEl.dataset.original = original;
-      emailEl.textContent = temp;
-      clearTimeout(swapEmailText._id);
-      swapEmailText._id = setTimeout(() => {
-        emailEl.textContent = original;
-      }, ms);
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* Убирает синий квадрат при тапе на Android */
+        }
 
-    emailEl.addEventListener("click", async (e) => {
-      e.preventDefault();
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            /* Системный стек шрифтов Apple */
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;        /* Строго по центру горизонтально */
+            justify-content: flex-start; /* Контент идет от верха */
+            
+            min-height: 100vh;
+            padding: 20px;
+            padding-top: var(--spacing-top); /* Сдвиг контента вверх */
+            
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; /* Сглаживание шрифтов */
+        }
 
-      const email = emailEl.dataset.email || emailEl.textContent.trim();
-      const ok = await copyText(email);
+        /* Общие стили для ссылок */
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+            outline: none;
+            user-select: none; /* Чтобы не выделялся текст при частых кликах */
+        }
+        
+        a:active {
+            opacity: 0.6;
+            transform: scale(0.98);
+        }
 
-      if (ok) {
-        swapEmailText("Copied", 1100);
-        if (navigator.vibrate) navigator.vibrate(8);
-      } else {
-        window.location.href = "mailto:" + email;
-      }
-    });
-  </script>
+        /* --- БЛОК 1: ИМЯ И ПОЧТА --- */
+        .identity-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: var(--gap-blocks);
+        }
+
+        .name-link h1 {
+            font-size: var(--font-name);
+            font-weight: 800; /* Жирный, но не Black */
+            letter-spacing: -1px;
+            line-height: 1.1;
+            white-space: nowrap; /* Гарантия одной строки */
+            margin-bottom: var(--gap-name-mail);
+        }
+
+        .mail-link {
+            font-size: var(--font-mail);
+            font-weight: 500; /* Medium */
+            color: var(--mail-color);
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        /* Кнопка Copy */
+        .copy-btn {
+            margin-top: var(--gap-mail-copy);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-gray);
+            border: none;
+            font-size: var(--font-copy);
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 99px; /* Полная пилюля */
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        
+        .copy-btn.copied {
+            background: #32D74B; /* Apple Green */
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* --- БЛОК 2: СОЦСЕТИ --- */
+        .social-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--gap-socials); /* Плотная компоновка */
+            width: 100%;
+        }
+
+        .social-item {
+            font-size: var(--font-social);
+            font-weight: 800; /* Жирный акцидентный шрифт */
+            letter-spacing: -0.8px;
+            white-space: nowrap;
+            /* Цвет по умолчанию белый, бренд при наведении (на ПК) */
+            color: var(--text-white); 
+        }
+
+        /* Цвета при наведении (Desktop) */
+        @media (hover: hover) {
+            .tiktok:hover { color: #25F4EE; }
+            .telegram:hover { color: #2AABEE; }
+            .instagram:hover { color: #E1306C; }
+            .youtube:hover { color: #FF0000; }
+        }
+        
+        /* Мобильные настройки (если нужно будет что-то специфичное) */
+        @media (max-width: 600px) {
+            :root {
+                --spacing-top: 12vh; /* На маленьких экранах чуть выше */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="identity-group">
+        <a href="https://geragaraza.com/" class="name-link">
+            <h1 class="scramble-target">Herman Harazha</h1>
+        </a>
+
+        <a href="mailto:Geragaraza@gmail.com" class="mail-link scramble-target">Geragaraza@gmail.com</a>
+        
+        <button class="copy-btn" onclick="copyEmail(this)">Copy email</button>
+    </div>
+
+    <nav class="social-group">
+        <a href="https://www.tiktok.com/@geragaraza" class="social-item tiktok scramble-target">TikTok</a>
+        <a href="https://t.me/geragaraza" class="social-item telegram scramble-target">Telegram</a>
+        <a href="https://www.instagram.com/geragaraza" class="social-item instagram scramble-target">Instagram</a>
+        <a href="https://www.youtube.com/@geragaraza" class="social-item youtube scramble-target">YouTube</a>
+    </nav>
+
+    <script>
+        // --- 1. Scramble Effect (Матрица) ---
+        // Используем только заглавные и цифры для стиля
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        
+        function runScramble(el) {
+            if (el.dataset.animating === "true") return;
+            el.dataset.animating = "true";
+
+            const originalText = el.innerText;
+            let iteration = 0;
+            
+            // Интервал 25мс = очень быстро, как ты просил
+            const interval = setInterval(() => {
+                el.innerText = originalText.split("")
+                    .map((letter, index) => {
+                        if(index < iteration) return originalText[index];
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join("");
+                
+                // Шаг +1 (быстрое раскрытие)
+                if(iteration >= originalText.length) {
+                    clearInterval(interval);
+                    el.innerText = originalText; // Фиксация
+                    el.dataset.animating = "false";
+                }
+                iteration += 1; 
+            }, 25); 
+        }
+
+        // Запуск при полной загрузке
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.scramble-target').forEach(el => runScramble(el));
+        });
+
+
+        // --- 2. Логика Копирования ---
+        function copyEmail(btn) {
+            const email = "Geragaraza@gmail.com";
+            
+            // Haptic feedback (вибрация) для Android
+            if (navigator.vibrate) navigator.vibrate(15);
+
+            navigator.clipboard.writeText(email).then(() => {
+                const originalText = btn.innerText;
+                
+                // Визуальное подтверждение
+                btn.innerText = "Copied ✓";
+                btn.classList.add("copied");
+
+                // Возврат через 1.5 секунды
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove("copied");
+                }, 1500);
+            }).catch(err => {
+                console.error('Copy failed', err);
+                btn.innerText = "Error";
+            });
+        }
+
+
+        // --- 3. Общая вибрация на ссылках (UX) ---
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navigator.vibrate) navigator.vibrate(10);
+            });
+        });
+    </script>
+
 </body>
 </html>
