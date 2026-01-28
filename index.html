@@ -1,231 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Geragaraza (Herman Harazha)</title>
-    
-    <link rel="icon" href="favicon.png" type="image/png">
-    
-    <meta property="og:title" content="Geragaraza">
-    <meta property="og:description" content="Herman Harazha links">
-    <meta property="og:image" content="preview.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Geragaraza (Herman Harazha)</title>
 
-    <style>
-        :root {
-            --bg-color: #000000;
-            --text-white: #ffffff;
-        }
+  <!-- Icons -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://geragaraza.com/" />
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+  <!-- SEO -->
+  <meta name="description" content="Herman Harazha links: Mail, TikTok, Telegram, Instagram, YouTube." />
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+  <!-- Open Graph -->
+  <meta property="og:title" content="Geragaraza" />
+  <meta property="og:description" content="Herman Harazha links" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://geragaraza.com/" />
+  <meta property="og:image" content="https://geragaraza.com/preview.jpg" />
 
-        /* Аватарка */
-        .avatar-container {
-            width: 140px;
-            height: 140px;
-            margin-bottom: 30px;
-            display: block;
-        }
-        .avatar-circle {
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            border-radius: 50%;
-            transition: transform 0.2s ease;
-        }
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Geragaraza" />
+  <meta name="twitter:description" content="Herman Harazha links" />
+  <meta name="twitter:image" content="https://geragaraza.com/preview.jpg" />
 
-        .header-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 50px;
-            width: 100%; 
-        }
+  <style>
+    :root {
+      --bg: #000;
+      --text: #fff;
 
-        .name-link {
-            text-decoration: none;
-            color: var(--text-white);
-            display: block;
-            width: 100%;
-        }
-        
-        h1 {
-            /* Desktop размер */
-            font-size: 72px; 
-            font-weight: 900; /* Максимальная жирность */
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            white-space: nowrap; /* ЗАПРЕТ переноса строки */
-        }
+      /* Desktop proportions (feel free to tweak) */
+      --avatar-desktop: 120px;
+      --avatar-mobile: 96px;
 
-        /* MAIL: Теперь массивный и жирный */
-        .mail-link {
-            /* Desktop размер */
-            font-size: 56px; 
-            font-weight: 800; /* Жирный, как и соцсети */
-            color: #00a6ff;
-            text-decoration: underline;
-            text-underline-offset: 10px;
-            text-decoration-thickness: 3px; /* Толстое подчеркивание */
-            text-decoration-color: rgba(0, 166, 255, 0.4);
-            transition: all 0.2s ease;
-            width: fit-content;
-        }
-        .mail-link:hover {
-            color: #006ed1;
-            text-decoration-color: #006ed1;
-            text-decoration-thickness: 6px;
-            transform: scale(1.02);
-        }
+      /* Spacing */
+      --gap-after-avatar: 18px;
+      --gap-after-header: 34px;
+      --gap-mail-to-socials: 36px; /* separation between Mail and socials */
 
-        /* Группа соцсетей */
-        .social-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            width: 100%;
-        }
+      /* Underline */
+      --underline-thickness: 3px;
+      --underline-thickness-hover: 6px;
+    }
 
-        .social-item {
-            /* Desktop размер */
-            font-size: 64px;
-            font-weight: 800;
-            text-decoration: underline;
-            text-underline-offset: 12px;
-            text-decoration-thickness: 3px;
-            letter-spacing: -1.5px;
-            transition: all 0.2s ease;
-            width: fit-content;
-            cursor: pointer;
-        }
-        
-        .social-item:hover {
-            transform: scale(1.02); /* Легкое приближение (не прилипание) */
-            text-decoration-thickness: 6px;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        /* Цвета */
-        .tiktok { color: #25F4EE; text-decoration-color: rgba(37, 244, 238, 0.3); }
-        .tiktok:hover { color: #FE2C55; text-decoration-color: #FE2C55; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
 
-        .telegram { color: #0088CC; text-decoration-color: rgba(0, 136, 204, 0.3); }
-        .telegram:hover { color: #24A1DE; text-decoration-color: #24A1DE; }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .instagram { color: #6228d7; text-decoration-color: rgba(98, 40, 215, 0.3); }
-        .instagram:hover { color: #ee2a7b; text-decoration-color: #ee2a7b; }
+    /* Wrap everything so we can shift it up on mobile cleanly */
+    main.page {
+      width: min(560px, 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-        .youtube { color: #FF0000; text-decoration-color: rgba(255, 0, 0, 0.3); }
-        .youtube:hover { color: #ffffff; text-decoration-color: #ffffff; }
+    /* Avatar */
+    .avatar-container {
+      width: var(--avatar-desktop);
+      height: var(--avatar-desktop);
+      margin-bottom: var(--gap-after-avatar);
+      display: block;
+      border-radius: 50%;
+      overflow: hidden;
+      text-decoration: none;
+    }
 
-        /* --- МОБИЛЬНАЯ ВЕРСИЯ (Критически важный блок) --- */
-        @media (max-width: 600px) {
-            body { 
-                justify-content: center; /* Оставляем по центру */
-                padding-top: 20px;
-            }
-            
-            .header-group { margin-bottom: 40px; }
-            .avatar-container { width: 120px; height: 120px; margin-bottom: 20px; }
+    .avatar-circle {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+    }
 
-            h1 {
-                /* Уменьшаем шрифт принудительно, чтобы влезло в одну строку */
-                /* ~34-36px это предел для Herman Harazha на iPhone SE/Mini */
-                font-size: 34px; 
-                letter-spacing: -1px; 
-            }
+    /* Header */
+    .header-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: var(--gap-after-header);
+    }
 
-            .mail-link {
-                /* Mail должен быть крупным */
-                font-size: 34px; 
-                text-underline-offset: 6px;
-            }
+    .name-link {
+      color: var(--text);
+      text-decoration: none;
+      display: inline-block;
+      max-width: 100%;
+    }
 
-            .social-item {
-                /* Соцсети чуть больше почты */
-                font-size: 40px;
-                text-underline-offset: 8px;
-            }
-            
-            .social-group { gap: 20px; }
-        }
-    </style>
+    h1 {
+      /* Bigger overall, but still safe on small screens */
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+
+      white-space: nowrap; /* keep one line */
+      overflow: hidden;
+      text-overflow: clip;
+
+      /* Responsive sizing: safe min for small phones, big on desktop */
+      font-size: clamp(32px, 9.2vw, 76px);
+    }
+
+    /* Mail */
+    .mail-link {
+      /* Slightly smaller than socials */
+      font-weight: 800;
+      font-size: clamp(28px, 7.8vw, 56px);
+
+      color: #00a6ff;
+      text-decoration: underline;
+      text-underline-offset: 10px;
+      text-decoration-thickness: var(--underline-thickness);
+      text-decoration-color: rgba(0, 166, 255, 0.4);
+
+      transition: transform 0.2s ease, color 0.2s ease, text-decoration-color 0.2s ease, text-decoration-thickness 0.2s ease;
+      width: fit-content;
+    }
+
+    /* Socials block */
+    .social-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+
+      /* extra separation from Mail */
+      margin-top: var(--gap-mail-to-socials);
+    }
+
+    .social-item {
+      font-weight: 800;
+      font-size: clamp(30px, 8.4vw, 64px); /* ~10–12% bigger than Mail on mobile */
+      letter-spacing: -1.5px;
+
+      text-decoration: underline;
+      text-underline-offset: 12px;
+      text-decoration-thickness: var(--underline-thickness);
+
+      transition: transform 0.2s ease, color 0.2s ease, text-decoration-color 0.2s ease, text-decoration-thickness 0.2s ease;
+      width: fit-content;
+      cursor: pointer;
+    }
+
+    /* Colors */
+    .tiktok { color: #25F4EE; text-decoration-color: rgba(37, 244, 238, 0.30); }
+    .telegram { color: #0088CC; text-decoration-color: rgba(0, 136, 204, 0.30); }
+    .instagram { color: #6228d7; text-decoration-color: rgba(98, 40, 215, 0.30); }
+    .youtube { color: #FF0000; text-decoration-color: rgba(255, 0, 0, 0.30); }
+
+    /* Hover only on devices that actually hover (desktop/mac) */
+    @media (hover: hover) and (pointer: fine) {
+      .mail-link:hover {
+        color: #006ed1;
+        text-decoration-color: #006ed1;
+        text-decoration-thickness: var(--underline-thickness-hover);
+        transform: scale(1.02);
+      }
+
+      .social-item:hover {
+        transform: scale(1.02);
+        text-decoration-thickness: var(--underline-thickness-hover);
+      }
+
+      .tiktok:hover { color: #FE2C55; text-decoration-color: #FE2C55; }
+      .telegram:hover { color: #24A1DE; text-decoration-color: #24A1DE; }
+      .instagram:hover { color: #ee2a7b; text-decoration-color: #ee2a7b; }
+      .youtube:hover { color: #ffffff; text-decoration-color: #ffffff; }
+
+      .avatar-container:hover .avatar-circle {
+        transform: scale(1.02);
+      }
+    }
+
+    /* Focus styles (keyboard / accessibility) */
+    a:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.65);
+      outline-offset: 6px;
+      border-radius: 14px;
+    }
+
+    /* Mobile layout: поднять блок вверх + аватар меньше */
+    @media (max-width: 600px) {
+      body {
+        justify-content: flex-start;
+      }
+
+      main.page {
+        padding-top: 10vh; /* <-- поднимает композицию */
+      }
+
+      .avatar-container {
+        width: var(--avatar-mobile);
+        height: var(--avatar-mobile);
+        margin-bottom: 14px;
+      }
+
+      /* Slightly tighter spacing on mobile */
+      .header-group { margin-bottom: 22px; }
+      .social-group { margin-top: 28px; gap: 18px; }
+
+      /* If you want even more "name-first" feeling: reduce avatar gap */
+      :root { --gap-after-avatar: 14px; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; }
+      .avatar-circle, .mail-link, .social-item { transition: none !important; }
+    }
+  </style>
 </head>
-<body>
 
-    <a href="https://geragaraza.com/" class="avatar-container">
-        <div class="avatar-circle"></div>
+<body>
+  <main class="page">
+    <a href="https://geragaraza.com/" class="avatar-container" aria-label="Home">
+      <div class="avatar-circle" aria-hidden="true"></div>
     </a>
 
     <div class="header-group">
-        <a href="https://geragaraza.com/" class="name-link">
-            <h1>Herman Harazha</h1>
-        </a>
-        <a href="mailto:Geragaraza@gmail.com" class="mail-link scramble-target">Mail</a>
+      <a href="https://geragaraza.com/" class="name-link" aria-label="Home">
+        <h1>Herman Harazha</h1>
+      </a>
+
+      <!-- Можно заменить Mail на реальный адрес, если хочешь сильнее "понятность" -->
+      <a href="mailto:Geragaraza@gmail.com" class="mail-link scramble-target" aria-label="Email: Geragaraza@gmail.com">
+        Mail
+      </a>
     </div>
 
-    <div class="social-group">
-        <a href="https://www.tiktok.com/@geragaraza" class="social-item tiktok scramble-target">TikTok</a>
-        <a href="https://t.me/geragaraza" class="social-item telegram scramble-target">Telegram</a>
-        <a href="https://www.instagram.com/geragaraza" class="social-item instagram scramble-target">Instagram</a>
-        <a href="https://www.youtube.com/@geragaraza" class="social-item youtube scramble-target">YouTube</a>
+    <div class="social-group" aria-label="Social links">
+      <a href="https://www.tiktok.com/@geragaraza" class="social-item tiktok scramble-target" aria-label="TikTok">
+        TikTok
+      </a>
+      <a href="https://t.me/geragaraza" class="social-item telegram scramble-target" aria-label="Telegram">
+        Telegram
+      </a>
+      <a href="https://www.instagram.com/geragaraza" class="social-item instagram scramble-target" aria-label="Instagram">
+        Instagram
+      </a>
+      <a href="https://www.youtube.com/@geragaraza" class="social-item youtube scramble-target" aria-label="YouTube">
+        YouTube
+      </a>
     </div>
+  </main>
 
-    <script>
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        
-        function runScramble(el) {
-            let iteration = 0;
-            const originalText = el.innerText; // Запоминаем исходный текст
-            const interval = setInterval(() => {
-                el.innerText = originalText.split("")
-                    .map((letter, index) => {
-                        if(index < iteration) return originalText[index];
-                        return letters[Math.floor(Math.random() * 26)];
-                    })
-                    .join("");
-                
-                if(iteration >= originalText.length) clearInterval(interval);
-                
-                // Скорость перебора (чем меньше делитель, тем быстрее)
-                iteration += 1 / 2; 
-            }, 30);
+  <script>
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function runScramble(el) {
+      if (reduceMotion) return;
+
+      // prevent double-run
+      if (el.dataset.scrambling === "1") return;
+      el.dataset.scrambling = "1";
+
+      const original = el.dataset.original || el.textContent;
+      el.dataset.original = original;
+
+      let iteration = 0;
+      const step = 0.5; // 0.5 = smooth, 1.0 = faster
+      const intervalMs = 28;
+
+      const id = setInterval(() => {
+        const next = original.split("").map((ch, idx) => {
+          // keep spaces & non-letters stable for cleaner look
+          if (ch === " " || ch === "\n") return ch;
+          if (idx < iteration) return original[idx];
+          return letters[Math.floor(Math.random() * letters.length)];
+        }).join("");
+
+        el.textContent = next;
+
+        iteration += step;
+        if (iteration >= original.length) {
+          el.textContent = original;
+          clearInterval(id);
+          el.dataset.scrambling = "0";
         }
+      }, intervalMs);
+    }
 
-        // Запуск только после полной загрузки страницы
-        window.addEventListener('load', () => {
-            // Ищем только элементы с классом scramble-target (Почта + Ссылки)
-            document.querySelectorAll('.scramble-target').forEach(el => runScramble(el));
-        });
+    window.addEventListener("load", () => {
+      document.querySelectorAll(".scramble-target").forEach(runScramble);
+    });
 
-        // Вибрация (Android)
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navigator.vibrate) navigator.vibrate(15);
-            });
-        });
-    </script>
-
+    // Vibration (Android): лучше ощущается на pointerdown
+    document.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("pointerdown", () => {
+        if (navigator.vibrate) navigator.vibrate(12);
+      }, { passive: true });
+    });
+  </script>
 </body>
 </html>
