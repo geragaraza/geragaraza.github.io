@@ -6,7 +6,6 @@
     <title>Geragaraza (Herman Harazha)</title>
     
     <link rel="icon" href="favicon.png" type="image/png">
-    
     <meta property="og:image" content="preview.jpg">
     <meta property="og:title" content="Geragaraza">
     <meta property="og:description" content="Herman Harazha Official Links">
@@ -32,20 +31,19 @@
             justify-content: flex-start;
             min-height: 100vh;
             margin: 0;
-            padding: 8vh 20px;
+            padding: 6vh 20px;
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
             animation: reveal 0.6s ease-out;
         }
 
-        /* Идеально белый круг (CSS) */
+        /* Увеличенная аватарка */
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             background-color: #ffffff;
             border-radius: 50%;
-            margin-bottom: 25px;
-            cursor: pointer;
+            margin-bottom: 30px;
             transition: transform 0.3s ease;
         }
 
@@ -56,11 +54,12 @@
         }
 
         h1 {
-            font-size: 62px;
+            font-size: 64px;
             font-weight: 800;
-            margin: 0 0 55px;
+            margin: 0 0 60px;
             letter-spacing: -2px;
             line-height: 1;
+            text-align: center;
         }
 
         .links-container {
@@ -73,6 +72,9 @@
         }
 
         .link-item {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Отступ между иконкой и текстом */
             text-decoration: underline;
             text-underline-offset: 12px;
             text-decoration-thickness: 2px;
@@ -88,11 +90,21 @@
             text-decoration-thickness: 5px;
         }
 
-        /* Цвета */
+        /* SVG Иконка почты */
+        .mail-icon {
+            width: 38px;
+            height: 38px;
+            fill: currentColor;
+        }
+
+        /* Цвета ссылок */
+        .mail { color: #00a6ff; text-decoration-color: rgba(0, 166, 255, 0.3); }
+        .mail:hover { color: #006ed1; text-decoration-color: #006ed1; }
+
         .tiktok { color: #25F4EE; text-decoration-color: rgba(37, 244, 238, 0.3); }
         .tiktok:hover { color: #FE2C55; text-decoration-color: #FE2C55; }
 
-        .telegram { color: #0088CC; text-decoration-color: rgba(0, 136, 204, 0.4); }
+        .telegram { color: #0088CC; text-decoration-color: rgba(0, 136, 204, 0.3); }
         .telegram:hover { color: #24A1DE; text-decoration-color: #24A1DE; }
 
         .instagram { color: #6228d7; text-decoration-color: rgba(98, 40, 215, 0.3); }
@@ -102,9 +114,10 @@
         .youtube:hover { color: #ffffff; text-decoration-color: #ffffff; }
 
         @media (max-width: 600px) {
-            h1 { font-size: 46px; }
+            h1 { font-size: 48px; }
             .link-item { font-size: 34px; }
-            .avatar { width: 90px; height: 90px; }
+            .avatar { width: 120px; height: 120px; }
+            .mail-icon { width: 30px; height: 30px; }
         }
     </style>
 </head>
@@ -119,6 +132,13 @@
     </a>
 
     <div class="links-container">
+        <a href="mailto:Geragaraza@gmail.com" class="link-item mail">
+            <svg class="mail-icon" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Mail
+        </a>
+
         <a href="https://www.tiktok.com/@geragaraza" class="link-item tiktok">TikTok</a>
         <a href="https://t.me/geragaraza" class="link-item telegram">Telegram</a>
         <a href="https://www.instagram.com/geragaraza" class="link-item instagram">Instagram</a>
