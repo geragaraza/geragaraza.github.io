@@ -32,29 +32,23 @@
             --yt-main: #FF0000;
             --yt-hover: #ffffff;
 
-            /* Instagram (Новые цвета) */
             --inst-main: #6c45ef;
-            --inst-hover: #ffd603; /* Желтый акцент */
+            --inst-hover: #ffd603;
 
-            /* --- РАЗМЕРЫ (Агрессивное заполнение экрана) --- */
-            /* На мобильных (vw) шрифты будут ОЧЕНЬ большими */
-            
+            /* --- РАЗМЕРЫ --- */
+            /* Avatar */
             --avatar-size: clamp(100px, 25vw, 150px);
             
-            /* Имя: минимум 36px, на телефоне 11% от ширины экрана, макс 80px */
+            /* Text Sizes */
             --font-name: clamp(36px, 11vw, 80px);
-            
-            /* Почта: крупная и читаемая */
             --font-mail: clamp(22px, 6.5vw, 42px);
-            
-            /* Соцсети: массивные, чтобы заполнить пустоту */
             --font-social: clamp(32px, 10vw, 72px); 
             
-            /* Отступы */
-            --gap-avatar-name: 25px;
-            --gap-name-mail: 10px;
-            --gap-blocks: 6vh; /* Отступ до соцсетей */
-            --gap-socials: 8px; /* Расстояние между ссылками */
+            /* --- ОТСТУПЫ (Финальная подгонка) --- */
+            --gap-avatar-name: 20px;    /* Аватар -> Имя */
+            --gap-name-mail: 4px;       /* Имя -> Почта (Очень близко) */
+            --gap-blocks: 4vh;          /* Почта -> Соцсети (Разделитель блоков) */
+            --gap-socials: 6px;         /* Между соцсетями (Плотная сбивка) */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -67,10 +61,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Начало сверху */
+            justify-content: flex-start;
             
-            /* Отступ сверху (чтобы аватарка была красиво приподнята, но не прилипала) */
-            padding-top: 8vh; 
+            /* ПОЗИЦИЯ: Поднято еще выше */
+            padding-top: 5vh; 
             padding-bottom: 5vh;
             
             min-height: 100vh;
@@ -78,43 +72,41 @@
             overflow-x: hidden;
         }
 
-        /* Базовые настройки ссылок */
         a {
             text-decoration: none;
             cursor: pointer;
-            white-space: nowrap; /* Гарантия одной строки */
+            white-space: nowrap;
             transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.2s ease;
             user-select: none;
-            
-            /* УВЕЛИЧЕНИЕ ЗОНЫ КЛИКА (HIT-BOX) */
-            /* Это делает "кнопку" больше, чем сам текст */
-            padding: 5px 10px; 
             display: block;
             text-align: center;
             width: fit-content;
+            
+            /* Зона клика (Hit-box) */
+            padding: 2px 10px; 
         }
 
-        /* Эффект зума */
-        .zoom-effect:hover, .avatar-container:hover {
+        /* Только для ссылок с классом zoom-effect (Почта и Соцсети) */
+        .zoom-effect:hover {
             transform: scale(1.05);
         }
         
-        /* Эффект нажатия (Active) */
         a:active {
             transform: scale(0.95);
             opacity: 0.8;
         }
 
-        /* --- 1. АВАТАРКА --- */
+        /* --- 1. АВАТАРКА (Статична, но кликабельна) --- */
         .avatar-container {
             width: var(--avatar-size);
             height: var(--avatar-size);
             border-radius: 50%;
-            background-color: #ffffff; /* Белый круг (заглушка) */
+            background-color: #1a1a1a; /* Темно-серый заглушка, если нет фото */
             overflow: hidden;
             margin-bottom: var(--gap-avatar-name);
             flex-shrink: 0;
-            transition: transform 0.3s ease;
+            cursor: pointer;
+            /* Убрали transform при hover */
         }
         
         .avatar-img {
@@ -124,13 +116,19 @@
             display: block;
         }
 
-        /* --- 2. ИМЯ --- */
+        /* --- 2. ИМЯ (Статично, но кликабельно) --- */
         .name-link h1 {
             font-size: var(--font-name);
             font-weight: 800;
             letter-spacing: -1.5px;
             color: var(--text-white);
             line-height: 1.1;
+            /* Убрали hover эффект */
+        }
+        /* Убираем отступ у самой ссылки, он задается переменной */
+        .name-link {
+            margin-bottom: var(--gap-name-mail); 
+            padding-bottom: 0;
         }
 
         /* --- 3. ПОЧТА --- */
@@ -139,9 +137,8 @@
             font-weight: 600;
             color: var(--mail-main);
             letter-spacing: -0.5px;
-            margin-top: var(--gap-name-mail);
-            margin-bottom: var(--gap-blocks); /* Разрыв перед соцсетями */
-            padding: 10px 20px; /* Большое поле для нажатия */
+            margin-bottom: var(--gap-blocks);
+            padding: 5px 20px; /* Удобный клик */
         }
         
         .mail-link:hover { color: var(--mail-hover); }
@@ -151,7 +148,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: var(--gap-socials); /* Плотная компоновка */
+            gap: var(--gap-socials); /* Максимально плотно */
             width: 100%;
         }
 
@@ -159,10 +156,9 @@
             font-size: var(--font-social);
             font-weight: 800;
             letter-spacing: -1px;
-            padding: 8px 15px; /* Увеличиваем высоту кнопок */
+            padding: 4px 15px; /* Высота кнопок */
         }
 
-        /* Цвета */
         .tiktok { color: var(--tt-main); }
         .tiktok:hover { color: var(--tt-hover); }
 
@@ -180,10 +176,10 @@
 <body>
 
     <a href="https://geragaraza.com/" class="avatar-container">
-        <div class="avatar-img" style="background: #fff;"></div>
+        <div class="avatar-img" style="background: #ffffff;"></div> 
         </a>
 
-    <a href="https://geragaraza.com/" class="name-link zoom-effect">
+    <a href="https://geragaraza.com/" class="name-link">
         <h1>Herman Harazha</h1>
     </a>
 
@@ -197,12 +193,15 @@
     </nav>
 
     <script>
-        // --- SCRAMBLE EFFECT ---
+        // --- SCRAMBLE (0.5 SEC) ---
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         
         function runScramble(el) {
             const originalText = el.innerText;
             let iteration = 0;
+            
+            // 25ms интервал. Шаг 0.5. 
+            // Пример: Слово 10 букв. Нужно 20 итераций. 20 * 25ms = 500ms (0.5 сек).
             const interval = setInterval(() => {
                 el.innerText = originalText.split("")
                     .map((letter, index) => {
@@ -215,7 +214,7 @@
                     clearInterval(interval);
                     el.innerText = originalText;
                 }
-                iteration += 1 / 2; 
+                iteration += 1 / 2; // Скорость перебора
             }, 25); 
         }
 
@@ -223,19 +222,20 @@
             document.querySelectorAll('.scramble-target').forEach(el => runScramble(el));
         });
 
-        // --- EMAIL COPY LOGIC ---
+        // --- COPY EMAIL ---
         function copyEmail(element) {
             const email = "Geragaraza@gmail.com";
             
             if (navigator.vibrate) navigator.vibrate(15);
 
             navigator.clipboard.writeText(email).then(() => {
-                const originalText = element.innerText;
+                // Мгновенная обратная связь
                 element.innerText = "Copied";
                 
+                // Возврат через 1 секунду
                 setTimeout(() => {
                     element.innerText = email;
-                }, 1200);
+                }, 1000);
             }).catch(console.error);
         }
     </script>
