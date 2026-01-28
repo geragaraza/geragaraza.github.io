@@ -6,29 +6,17 @@
     <title>Geragaraza (Herman Harazha)</title>
     
     <link rel="icon" href="favicon.png" type="image/png">
-    
+    <meta property="og:image" content="preview.jpg">
+
     <style>
         :root {
+            /* Базовая математика размеров (Desktop) */
+            --name-size: 60px;
+            --social-size: 54px; /* 90% */
+            --mail-size: 48px;   /* 80% */
+            
             --bg-color: #000000;
             --text-primary: #ffffff;
-            --mail-accent: #00a6ff;
-            --scale-factor: 1.1; /* Коэффициент увеличения при ховере */
-        }
-
-        /* Эффект зернистости (Grain) */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-            opacity: 0.05;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; filter: blur(15px); }
-            to { opacity: 1; filter: blur(0); }
         }
 
         body {
@@ -38,85 +26,78 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Центровка по вертикали для вписывания в экран */
             min-height: 100vh;
             margin: 0;
-            padding: 10vh 20px;
+            padding: 20px;
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
-            animation: fadeIn 1s ease-out;
-            overflow-x: hidden;
         }
 
-        /* Аватарка: пропорционально увеличена */
+        /* Аватарка: фиксированный размер для баланса */
         .avatar {
-            width: clamp(140px, 15vw, 180px);
-            height: clamp(140px, 15vw, 180px);
+            width: 140px;
+            height: 140px;
             background-color: #ffffff;
             border-radius: 50%;
-            margin-bottom: 40px;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
         }
 
-        /* Заголовок: Математический центр */
         .header-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            margin-bottom: 100px;
+            margin-bottom: 40px; /* Умеренный отступ */
         }
 
         h1 {
-            font-size: clamp(48px, 8vw, 72px);
+            font-size: var(--name-size);
             font-weight: 800;
-            margin: 0 0 15px;
-            letter-spacing: -3px;
-            line-height: 0.9;
+            margin: 0 0 5px;
+            letter-spacing: -2px;
+            line-height: 1;
         }
 
-        /* Mail: Сбалансированный размер */
         .mail-link {
-            display: inline-block;
             text-decoration: underline;
-            text-underline-offset: 8px;
+            text-underline-offset: 6px;
             text-decoration-thickness: 1px;
             font-weight: 600;
-            font-size: clamp(24px, 4vw, 32px); /* Увеличили */
-            color: var(--mail-accent);
+            font-size: var(--mail-size);
+            color: #00a6ff;
             text-decoration-color: rgba(0, 166, 255, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.2s ease;
         }
         .mail-link:hover {
             color: #006ed1;
             text-decoration-color: #006ed1;
-            transform: translateY(-2px);
         }
 
-        /* Сетки ссылок */
         .links-container {
-            width: 100%;
-            max-width: 600px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 45px; /* Математически равные отступы */
+            gap: 20px; /* Плотное расположение, чтобы влезло в экран */
         }
 
         .link-item {
             text-decoration: underline;
-            text-underline-offset: 14px;
+            text-underline-offset: 8px;
             text-decoration-thickness: 2px;
             font-weight: 700;
-            font-size: clamp(32px, 6vw, 48px); /* Оптимальный размер */
-            letter-spacing: -1.5px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            font-size: var(--social-size);
+            letter-spacing: -1px;
+            transition: transform 0.2s ease, text-decoration-thickness 0.2s ease;
             width: fit-content;
-            text-align: center;
         }
 
         .link-item:hover {
-            transform: scale(var(--scale-factor));
-            text-decoration-thickness: 6px;
+            transform: scale(1.02);
+            text-decoration-thickness: 4px;
         }
 
-        /* Цвета соцсетей */
+        /* Цвета */
         .tiktok { color: #25F4EE; text-decoration-color: rgba(37, 244, 238, 0.3); }
         .tiktok:hover { color: #FE2C55; text-decoration-color: #FE2C55; }
 
@@ -129,10 +110,16 @@
         .youtube { color: #FF0000; text-decoration-color: rgba(255, 0, 0, 0.3); }
         .youtube:hover { color: #ffffff; text-decoration-color: #ffffff; }
 
-        /* Выделение текста */
-        ::selection {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+        /* Адаптация под мобильные (уменьшаем базу, сохраняем пропорции) */
+        @media (max-width: 600px) {
+            :root {
+                --name-size: 40px;
+                --social-size: 36px;
+                --mail-size: 32px;
+            }
+            .avatar { width: 100px; height: 100px; }
+            .links-container { gap: 15px; }
+            .header-section { margin-bottom: 30px; }
         }
     </style>
 </head>
