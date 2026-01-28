@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herman Harazha | Герман Гаража</title>
+    <title>Gera Harazha (Herman Harazha)</title>
     <style>
-        :root {
-            --bg-color: #0d1117;
-            --text-color: #ffffff;
-            --accent-color: #2f81f7;
-            --btn-bg: rgba(255, 255, 255, 0.05);
-            --btn-hover: rgba(255, 255, 255, 0.1);
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: #000000; /* Сплошной черный */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -26,65 +18,66 @@
             padding: 20px;
         }
 
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            background: #ccc;
-            border-radius: 50%;
-            margin-bottom: 20px;
+        h1 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
         }
-
-        h1 { font-size: 28px; margin: 0; font-weight: 600; }
-        h2 { font-size: 22px; margin: 5px 0 30px; font-weight: 400; opacity: 0.8; }
 
         .links-container {
             width: 100%;
-            max-width: 400px;
+            max-width: 360px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
 
         .link-card {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 16px;
+            border: 1.5px solid; /* Толщина рамки */
             border-radius: 12px;
             text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            background: var(--btn-bg);
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.1s ease, opacity 0.2s ease;
+            background: transparent;
         }
 
-        .link-card:hover {
-            background: var(--btn-hover);
-            transform: translateY(-2px);
-            border-color: var(--accent-color);
+        /* Настройка цветов для каждой кнопки из твоего списка */
+        .instagram {
+            border-color: #708dff;
+            color: #708dff;
         }
 
-        /* Цвета брендов (опционально) */
-        .telegram { border-color: #0088cc; }
-        .tiktok { border-color: #ff0050; }
-        .youtube { border-color: #ff0000; }
-        .instagram { border-color: #e1306c; }
-        .pinterest { border-color: #bd081c; }
+        .tiktok {
+            border-color: #fe2c55;
+            color: #fe2c55;
+        }
 
+        .youtube {
+            border-color: #ff0032;
+            color: #ff0032;
+        }
+
+        /* Эффект при нажатии */
+        .link-card:active {
+            transform: scale(0.98);
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
 
-    <div class="profile-pic"></div> <h1>Herman Harazha</h1>
-    <h2>Герман Гаража</h2>
+    <h1>Herman Harazha</h1>
 
     <div class="links-container">
-        <a href="#" class="link-card telegram">Telegram</a>
-        <a href="#" class="link-card tiktok">TikTok</a>
-        <a href="#" class="link-card youtube">YouTube</a>
-        <a href="#" class="link-card instagram">Instagram</a>
-        <a href="#" class="link-card pinterest">Pinterest</a>
+        <a href="https://www.instagram.com/geragaraza/" class="link-card instagram">Instagram</a>
+        <a href="https://www.tiktok.com/@geragaraza" class="link-card tiktok">TikTok</a>
+        <a href="https://www.youtube.com/channel/UC0gms2Ej4hVSf8tcV-IHfYg" class="link-card youtube">YouTube</a>
     </div>
 
 </body>
