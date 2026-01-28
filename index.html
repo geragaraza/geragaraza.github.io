@@ -8,10 +8,10 @@
     <link rel="icon" href="favicon.png" type="image/png">
     
     <meta property="og:title" content="Geragaraza">
-    <meta property="og:description" content="Herman Harazha Links">
+    <meta property="og:description" content="Herman Harazha links">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://geragaraza.com/">
-    <meta property="og:image" content="https://geragaraza.com/og-image.png?v=4">
+    <meta property="og:image" content="https://geragaraza.com/og-image.png?v=final">
     <meta name="theme-color" content="#000000">
 
     <style>
@@ -35,9 +35,9 @@
             
             /* ОТСТУПЫ */
             --gap-avatar-name: 20px;
-            --gap-name-mail: 4px;       /* Почта придвинута к имени */
-            --gap-blocks: 4vh;          /* Блок соцсетей отдельно */
-            --gap-socials: 4px;         /* Соцсети плотно */
+            --gap-name-mail: 4px;
+            --gap-blocks: 4vh;
+            --gap-socials: 4px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -121,8 +121,9 @@
         function runScramble(el, duration) {
             const originalText = el.innerText;
             let iteration = 0;
-            const intervalTime = 25;
-            const stepIncrement = originalText.length / (duration / intervalTime);
+            const intervalTime = 25; 
+            const totalSteps = duration / intervalTime;
+            const stepIncrement = originalText.length / totalSteps;
 
             const interval = setInterval(() => {
                 el.innerText = originalText.split("").map((letter, index) => {
@@ -139,7 +140,9 @@
         }
 
         window.addEventListener('load', () => {
+            // Почта: 250мс
             document.querySelectorAll('.scramble-target-fast').forEach(el => runScramble(el, 250));
+            // Соцсети: 500мс
             document.querySelectorAll('.scramble-target-slow').forEach(el => runScramble(el, 500));
         });
 
