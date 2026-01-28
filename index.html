@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Geragaraza (Herman Harazha)</title>
     
     <link rel="icon" href="favicon.png" type="image/png">
@@ -10,37 +10,38 @@
 
     <style>
         :root {
-            /* Базовая математика размеров (Desktop) */
-            --name-size: 60px;
-            --social-size: 54px; /* 90% */
-            --mail-size: 48px;   /* 80% */
-            
             --bg-color: #000000;
             --text-primary: #ffffff;
+            /* Пропорции */
+            --name-font: 68px;
+            --social-font: 58px;
+            --mail-font: 50px;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Центровка по вертикали для вписывания в экран */
+            justify-content: flex-start; /* Смещение наверх */
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
+            padding: 5vh 15px; /* Меньше отступы по бокам для ширины */
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            touch-action: manipulation; /* Улучшает отклик на нажатия */
         }
 
-        /* Аватарка: фиксированный размер для баланса */
         .avatar {
             width: 140px;
             height: 140px;
             background-color: #ffffff;
             border-radius: 50%;
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
 
         .header-section {
@@ -48,78 +49,73 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-bottom: 40px; /* Умеренный отступ */
+            margin-bottom: 50px;
+        }
+
+        .name-link {
+            text-decoration: none;
+            color: white;
+            white-space: nowrap; /* Имя и фамилия в один ряд */
         }
 
         h1 {
-            font-size: var(--name-size);
+            font-size: var(--name-font);
             font-weight: 800;
-            margin: 0 0 5px;
-            letter-spacing: -2px;
-            line-height: 1;
+            margin: 0 0 10px;
+            letter-spacing: -3px;
         }
 
-        .mail-link {
+        /* Общие стили для всех ссылок */
+        .link-item {
             text-decoration: underline;
-            text-underline-offset: 6px;
-            text-decoration-thickness: 1px;
-            font-weight: 600;
+            text-underline-offset: 10px;
+            text-decoration-thickness: 2px;
+            font-weight: 700;
+            transition: color 0.3s ease, text-decoration-thickness 0.2s ease;
+            width: fit-content;
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .mail {
             font-size: var(--mail-size);
             color: #00a6ff;
             text-decoration-color: rgba(0, 166, 255, 0.3);
-            transition: color 0.2s ease;
-        }
-        .mail-link:hover {
-            color: #006ed1;
-            text-decoration-color: #006ed1;
+            margin-bottom: 50px; /* Отрыв от соцсетей */
         }
 
         .links-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px; /* Плотное расположение, чтобы влезло в экран */
+            gap: 25px;
+            width: 100%;
         }
 
-        .link-item {
-            text-decoration: underline;
-            text-underline-offset: 8px;
-            text-decoration-thickness: 2px;
-            font-weight: 700;
-            font-size: var(--social-size);
-            letter-spacing: -1px;
-            transition: transform 0.2s ease, text-decoration-thickness 0.2s ease;
-            width: fit-content;
+        /* Кнопки соцсетей (огромные) */
+        .social {
+            font-size: var(--social-font);
+            text-align: center;
         }
 
-        .link-item:hover {
-            transform: scale(1.02);
-            text-decoration-thickness: 4px;
-        }
-
-        /* Цвета */
+        /* Брендовые цвета */
         .tiktok { color: #25F4EE; text-decoration-color: rgba(37, 244, 238, 0.3); }
-        .tiktok:hover { color: #FE2C55; text-decoration-color: #FE2C55; }
-
         .telegram { color: #0088CC; text-decoration-color: rgba(0, 136, 204, 0.3); }
-        .telegram:hover { color: #24A1DE; text-decoration-color: #24A1DE; }
-
         .instagram { color: #6228d7; text-decoration-color: rgba(98, 40, 215, 0.3); }
-        .instagram:hover { color: #ee2a7b; text-decoration-color: #ee2a7b; }
-
         .youtube { color: #FF0000; text-decoration-color: rgba(255, 0, 0, 0.3); }
-        .youtube:hover { color: #ffffff; text-decoration-color: #ffffff; }
 
-        /* Адаптация под мобильные (уменьшаем базу, сохраняем пропорции) */
+        /* Состояние при наведении (цвета переключаются JS или CSS) */
+        .link-item:hover { text-decoration-thickness: 5px; }
+
         @media (max-width: 600px) {
             :root {
-                --name-size: 40px;
-                --social-size: 36px;
-                --mail-size: 32px;
+                --name-font: 44px;
+                --social-font: 48px; /* Соцсети на телефоне почти во весь экран */
+                --mail-font: 38px;
             }
-            .avatar { width: 100px; height: 100px; }
-            .links-container { gap: 15px; }
-            .header-section { margin-bottom: 30px; }
+            .avatar { width: 110px; height: 110px; }
+            .links-container { gap: 20px; width: 100%; }
         }
     </style>
 </head>
@@ -129,16 +125,97 @@
         <a href="https://geragaraza.com/">
             <div class="avatar"></div>
         </a>
-        <h1>Herman Harazha</h1>
-        <a href="mailto:Geragaraza@gmail.com" class="mail-link">Mail</a>
+        <a href="https://geragaraza.com/" class="name-link">
+            <h1>Herman Harazha</h1>
+        </a>
+        <a href="mailto:Geragaraza@gmail.com" class="link-item mail" data-value="Mail">Mail</a>
     </div>
 
     <div class="links-container">
-        <a href="https://www.tiktok.com/@geragaraza" class="link-item tiktok">TikTok</a>
-        <a href="https://t.me/geragaraza" class="link-item telegram">Telegram</a>
-        <a href="https://www.instagram.com/geragaraza" class="link-item instagram">Instagram</a>
-        <a href="https://www.youtube.com/@geragaraza" class="link-item youtube">YouTube</a>
+        <a href="https://www.tiktok.com/@geragaraza" class="link-item social tiktok" data-value="TikTok">TikTok</a>
+        <a href="https://t.me/geragaraza" class="link-item social telegram" data-value="Telegram">Telegram</a>
+        <a href="https://www.instagram.com/geragaraza" class="link-item social instagram" data-value="Instagram">Instagram</a>
+        <a href="https://www.youtube.com/@geragaraza" class="link-item social youtube" data-value="YouTube">YouTube</a>
     </div>
+
+    <script>
+        // 1. Анимация перебора букв (Scramble)
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const scrambleElements = document.querySelectorAll('.link-item');
+
+        scrambleElements.forEach(el => {
+            let interval = null;
+            const originalText = el.innerText;
+
+            const startScramble = () => {
+                let iteration = 0;
+                clearInterval(interval);
+                
+                interval = setInterval(() => {
+                    el.innerText = originalText.split("")
+                        .map((letter, index) => {
+                            if(index < iteration) return originalText[index];
+                            return letters[Math.floor(Math.random() * 26)]
+                        })
+                        .join("");
+                    
+                    if(iteration >= originalText.length) clearInterval(interval);
+                    iteration += 1 / 3;
+                }, 30);
+            };
+
+            // Запуск при загрузке
+            window.addEventListener('load', startScramble);
+            // Запуск при наведении (опционально, убрал чтобы не частило)
+        });
+
+        // 2. Магнитный эффект (притяжение к курсору)
+        document.addEventListener('mousemove', (e) => {
+            scrambleElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
+                
+                const distance = Math.sqrt(x*x + y*y);
+                
+                if (distance < 150) { // Радиус действия магнита
+                    const force = 10; // Сила притяжения
+                    el.style.transform = `translate(${(x / distance) * force}px, ${(y / distance) * force}px) scale(1.05)`;
+                } else {
+                    el.style.transform = `translate(0px, 0px) scale(1)`;
+                }
+            });
+        });
+
+        // 3. Вибрация при клике (Android)
+        scrambleElements.forEach(el => {
+            el.addEventListener('click', () => {
+                if (navigator.vibrate) navigator.vibrate(15);
+            });
+        });
+
+        // Смена цветов при наведении для соцсетей (поддержка твоих HEX)
+        const hoverColors = {
+            "TikTok": "#FE2C55",
+            "Telegram": "#24A1DE",
+            "Instagram": "#ee2a7b",
+            "YouTube": "#ffffff",
+            "Mail": "#006ed1"
+        };
+
+        scrambleElements.forEach(el => {
+            const originalColor = window.getComputedStyle(el).color;
+            el.addEventListener('mouseenter', () => {
+                const text = el.getAttribute('data-value');
+                el.style.color = hoverColors[text];
+                el.style.textDecorationColor = hoverColors[text];
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.color = "";
+                el.style.textDecorationColor = "";
+            });
+        });
+    </script>
 
 </body>
 </html>
