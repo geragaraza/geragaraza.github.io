@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Geragaraza (Herman Harazha)</title>
+  <title>Geragaraza</title>
 
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -11,39 +11,44 @@
 
   <meta name="theme-color" content="#000000" />
   <meta name="color-scheme" content="dark" />
-  <meta name="description" content="Herman Harazha — links and contact." />
+  <meta name="description" content="Herman Harazha links" />
 
   <meta property="og:title" content="Geragaraza" />
   <meta property="og:description" content="Herman Harazha links" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://geragaraza.com/" />
-  <meta property="og:image" content="https://geragaraza.com/preview.jpg" />
+
+  <!-- Поставь сюда PNG с прозрачностью (залей в корень сайта) -->
+  <meta property="og:image" content="https://geragaraza.com/preview.png?v=2" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Geragaraza" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Geragaraza" />
   <meta name="twitter:description" content="Herman Harazha links" />
-  <meta name="twitter:image" content="https://geragaraza.com/preview.jpg" />
+  <meta name="twitter:image" content="https://geragaraza.com/preview.png?v=2" />
 
   <style>
     :root{
       --bg:#000;
       --text:#fff;
 
-      /* РЫЧАГИ (главные настройки) */
-      --lift: clamp(28px, 7svh, 110px);    /* насколько сверху */
-      --maxw: 760px;                       /* ширина колонки */
+      --lift: clamp(24px, 6.5svh, 100px);
+      --maxw: 760px;
 
       --name:  clamp(44px, 6.2vw, 80px);
-      --email: clamp(20px, 3.2vw, 38px);
+      --email: clamp(22px, 3.4vw, 40px);
       --social: clamp(40px, 5.2vw, 60px);
 
-      --tapY: 12px;                        /* вертикальный паддинг клика */
-      --tapX: 16px;                        /* горизонтальный паддинг клика */
-      --gapEmail: 18px;                    /* отступ от почты до соцсетей */
-      --gapSocial: 14px;                   /* расстояние между соцсетями */
+      --tapY: 12px;
+      --tapX: 16px;
 
-      --u: 3px;                            /* толщина подчёркивания */
-      --uOffName: 0px;
+      --gapEmail: 24px;   /* больше отделяем верх от соцсетей */
+      --gapSocial: 12px;  /* соцсети плотнее */
+
+      --u: 3px;
       --uOffEmail: 10px;
       --uOffSocial: 12px;
     }
@@ -85,7 +90,7 @@
       letter-spacing:-2px;
       line-height:1.05;
       white-space:nowrap;
-      margin-bottom:14px;
+      margin-bottom:10px; /* ближе к почте */
       max-width:100%;
     }
 
@@ -131,7 +136,6 @@
       display:inline-block;
     }
 
-    /* Base colors + underline base */
     .tiktok{color:#25F4EE; text-decoration-color:rgba(37,244,238,.30)}
     .telegram{color:#0088CC; text-decoration-color:rgba(0,136,204,.30)}
     .instagram{color:#6228d7; text-decoration-color:rgba(98,40,215,.30)}
@@ -139,10 +143,7 @@
 
     /* Hover: меняется и текст, и подчёркивание */
     @media (hover:hover) and (pointer:fine){
-      .email:hover{
-        color:#006ed1;
-        text-decoration-color:#006ed1;
-      }
+      .email:hover{ color:#006ed1; text-decoration-color:#006ed1; }
 
       .tiktok:hover{ color:#FE2C55; text-decoration-color:#FE2C55; }
       .telegram:hover{ color:#24A1DE; text-decoration-color:#24A1DE; }
@@ -158,56 +159,31 @@
 
     .email:active,.social:active{ transform:translateY(1px); }
 
-    /* Mobile: делаем ещё крупнее и чуть плотнее по вертикали */
     @media (max-width:600px){
       :root{
-        --lift: clamp(22px, 6.5svh, 90px);
-        --name:  clamp(46px, 10.5vw, 70px);
-        --email: clamp(22px, 6.0vw, 34px);
-        --social: clamp(42px, 11.0vw, 58px);
+        --lift: clamp(18px, 5.5svh, 80px);
+
+        --name:  clamp(46px, 10.5vw, 72px);
+        --email: clamp(24px, 6.3vw, 38px);  /* почта чуть крупнее на айфоне */
+        --social: clamp(42px, 11.0vw, 60px);
+
         --tapY: 14px;
-        --gapEmail: 16px;
-        --gapSocial: 12px;
+        --gapEmail: 22px;
+        --gapSocial: 11px;
+
         --uOffEmail: 8px;
         --uOffSocial: 10px;
       }
-      h1{ letter-spacing:-1.6px; margin-bottom:12px; }
+      h1{ letter-spacing:-1.6px; }
     }
 
-    /* Очень узкие экраны: страховка, чтобы имя/почта не ломались */
     @media (max-width:360px){
       :root{
         --name: 44px;
-        --email: 20px;
+        --email: 22px;
         --social: 40px;
       }
       h1{ letter-spacing:-1.2px; }
-    }
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:22px;
-      transform:translateX(-50%);
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      color:rgba(255,255,255,.92);
-      padding:10px 14px;
-      border-radius:16px;
-      font-size:14px;
-      font-weight:600;
-      letter-spacing:-0.2px;
-      opacity:0;
-      pointer-events:none;
-      transition:opacity 120ms ease;
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-    }
-    .toast.show{opacity:1}
-
-    @media (prefers-reduced-motion: reduce){
-      .toast{ transition:none; }
-      .email:active,.social:active{ transform:none; }
     }
   </style>
 </head>
@@ -234,18 +210,8 @@
     </div>
   </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
-
   <script>
     const emailEl = document.getElementById("emailLink");
-    const toast = document.getElementById("toast");
-
-    function showToast(text){
-      toast.textContent = text;
-      toast.classList.add("show");
-      clearTimeout(showToast._id);
-      showToast._id = setTimeout(() => toast.classList.remove("show"), 900);
-    }
 
     async function copyText(text){
       try{
@@ -288,14 +254,11 @@
 
       if (ok) {
         swapEmailText("Copied", 1200);
-        showToast("Copied");
         if (navigator.vibrate) navigator.vibrate(8);
       } else {
-        showToast("Copy failed");
+        // если копирование недоступно — откроем почту стандартно
+        window.location.href = "mailto:" + email;
       }
-
-      // Если захочешь “копировать И открыть почту”:
-      // window.location.href = "mailto:" + encodeURIComponent(email);
     });
   </script>
 </body>
