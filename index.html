@@ -13,11 +13,6 @@
 
     <style>
         :root {
-            /* МАТЕМАТИЧЕСКАЯ ИЕРАРХИЯ (Desktop) */
-            --name-font: 80px;          /* 100% База */
-            --social-font: 72px;        /* 90% */
-            --mail-font: 64px;          /* 80% */
-            
             --bg-color: #000000;
             --text-white: #ffffff;
         }
@@ -32,21 +27,22 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-white);
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 20px;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Аватарка */
         .avatar-container {
-            width: 160px;
-            height: 160px;
-            margin-bottom: 25px;
+            width: 140px;
+            height: 140px;
+            margin-bottom: 30px;
             display: block;
         }
         .avatar-circle {
@@ -54,7 +50,7 @@
             height: 100%;
             background-color: #ffffff;
             border-radius: 50%;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
         }
 
         .header-group {
@@ -63,41 +59,47 @@
             align-items: center;
             text-align: center;
             margin-bottom: 50px;
+            width: 100%; 
         }
 
         .name-link {
             text-decoration: none;
             color: var(--text-white);
             display: block;
+            width: 100%;
         }
+        
         h1 {
-            font-size: var(--name-font);
-            font-weight: 900;
-            letter-spacing: -3px;
-            line-height: 1;
-            margin-bottom: 15px;
+            /* Desktop размер */
+            font-size: 72px; 
+            font-weight: 900; /* Максимальная жирность */
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            white-space: nowrap; /* ЗАПРЕТ переноса строки */
         }
 
-        /* Почта: 80% от размера имени */
+        /* MAIL: Теперь массивный и жирный */
         .mail-link {
-            font-size: var(--mail-size);
-            font-weight: 700;
+            /* Desktop размер */
+            font-size: 56px; 
+            font-weight: 800; /* Жирный, как и соцсети */
             color: #00a6ff;
             text-decoration: underline;
             text-underline-offset: 10px;
-            text-decoration-thickness: 2px;
-            text-decoration-color: rgba(0, 166, 255, 0.3);
-            transition: all 0.3s ease;
+            text-decoration-thickness: 3px; /* Толстое подчеркивание */
+            text-decoration-color: rgba(0, 166, 255, 0.4);
+            transition: all 0.2s ease;
             width: fit-content;
         }
         .mail-link:hover {
             color: #006ed1;
             text-decoration-color: #006ed1;
+            text-decoration-thickness: 6px;
             transform: scale(1.02);
-            text-decoration-thickness: 5px;
         }
 
-        /* Соцсети: 90% от размера имени */
+        /* Группа соцсетей */
         .social-group {
             display: flex;
             flex-direction: column;
@@ -107,22 +109,24 @@
         }
 
         .social-item {
-            font-size: var(--social-font);
+            /* Desktop размер */
+            font-size: 64px;
             font-weight: 800;
             text-decoration: underline;
             text-underline-offset: 12px;
-            text-decoration-thickness: 2px;
+            text-decoration-thickness: 3px;
             letter-spacing: -1.5px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             width: fit-content;
+            cursor: pointer;
         }
         
         .social-item:hover {
-            transform: scale(1.03);
+            transform: scale(1.02); /* Легкое приближение (не прилипание) */
             text-decoration-thickness: 6px;
         }
 
-        /* Брендовые цвета */
+        /* Цвета */
         .tiktok { color: #25F4EE; text-decoration-color: rgba(37, 244, 238, 0.3); }
         .tiktok:hover { color: #FE2C55; text-decoration-color: #FE2C55; }
 
@@ -135,17 +139,36 @@
         .youtube { color: #FF0000; text-decoration-color: rgba(255, 0, 0, 0.3); }
         .youtube:hover { color: #ffffff; text-decoration-color: #ffffff; }
 
-        /* Мобильная адаптация с сохранением пропорций */
+        /* --- МОБИЛЬНАЯ ВЕРСИЯ (Критически важный блок) --- */
         @media (max-width: 600px) {
-            :root {
-                --name-font: 48px;     /* 100% */
-                --social-font: 43px;   /* 90% */
-                --mail-font: 38px;     /* 80% */
+            body { 
+                justify-content: center; /* Оставляем по центру */
+                padding-top: 20px;
             }
-            body { justify-content: flex-start; padding-top: 8vh; }
+            
             .header-group { margin-bottom: 40px; }
-            .avatar-container { width: 120px; height: 120px; }
-            .social-group { gap: 15px; }
+            .avatar-container { width: 120px; height: 120px; margin-bottom: 20px; }
+
+            h1 {
+                /* Уменьшаем шрифт принудительно, чтобы влезло в одну строку */
+                /* ~34-36px это предел для Herman Harazha на iPhone SE/Mini */
+                font-size: 34px; 
+                letter-spacing: -1px; 
+            }
+
+            .mail-link {
+                /* Mail должен быть крупным */
+                font-size: 34px; 
+                text-underline-offset: 6px;
+            }
+
+            .social-item {
+                /* Соцсети чуть больше почты */
+                font-size: 40px;
+                text-underline-offset: 8px;
+            }
+            
+            .social-group { gap: 20px; }
         }
     </style>
 </head>
@@ -157,7 +180,7 @@
 
     <div class="header-group">
         <a href="https://geragaraza.com/" class="name-link">
-            <h1 class="scramble-target">Herman Harazha</h1>
+            <h1>Herman Harazha</h1>
         </a>
         <a href="mailto:Geragaraza@gmail.com" class="mail-link scramble-target">Mail</a>
     </div>
@@ -174,7 +197,7 @@
         
         function runScramble(el) {
             let iteration = 0;
-            const originalText = el.innerText;
+            const originalText = el.innerText; // Запоминаем исходный текст
             const interval = setInterval(() => {
                 el.innerText = originalText.split("")
                     .map((letter, index) => {
@@ -184,14 +207,19 @@
                     .join("");
                 
                 if(iteration >= originalText.length) clearInterval(interval);
-                iteration += originalText.length / 10;
+                
+                // Скорость перебора (чем меньше делитель, тем быстрее)
+                iteration += 1 / 2; 
             }, 30);
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
+        // Запуск только после полной загрузки страницы
+        window.addEventListener('load', () => {
+            // Ищем только элементы с классом scramble-target (Почта + Ссылки)
             document.querySelectorAll('.scramble-target').forEach(el => runScramble(el));
         });
 
+        // Вибрация (Android)
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navigator.vibrate) navigator.vibrate(15);
