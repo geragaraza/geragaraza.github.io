@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geragaraza (Herman Harazha)</title>
+    <meta property="og:image" content="preview.jpg">
     <style>
         :root {
             --bg-color: #000000;
             --text-primary: #ffffff;
         }
 
-        /* Плавное появление всего сайта */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Быстрое и мягкое появление */
+        @keyframes reveal {
+            from { opacity: 0; filter: blur(10px); transform: scale(0.98); }
+            to { opacity: 1; filter: blur(0); transform: scale(1); }
         }
 
         body {
@@ -26,43 +27,35 @@
             justify-content: flex-start;
             min-height: 100vh;
             margin: 0;
-            padding: 10vh 20px;
+            padding: 5vh 20px; /* Еще выше подняли контент */
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
-            animation: fadeIn 1.2s ease-out;
+            animation: reveal 0.4s ease-out;
         }
 
-        /* Аватарка-ссылка */
-        .avatar-link {
-            text-decoration: none;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .avatar-link:hover {
-            transform: scale(1.05);
-        }
+        /* Аватарка: меньше и без эффектов */
         .avatar {
-            width: 160px; /* Еще больше */
-            height: 160px;
+            width: 100px;
+            height: 100px;
             background-color: #ffffff;
             border-radius: 50%;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            cursor: pointer;
         }
 
-        /* Имя-ссылка */
+        /* Имя: больше, без ховеров */
         .name-link {
             text-decoration: none;
             color: white;
-            transition: opacity 0.3s ease;
-        }
-        .name-link:hover {
-            opacity: 0.8;
+            cursor: pointer;
         }
         h1 {
-            font-size: 48px; /* Большой размер */
-            font-weight: 700;
-            margin: 0 0 60px;
-            letter-spacing: -1.5px;
+            font-size: 56px; /* Еще мощнее */
+            font-weight: 800;
+            margin: 0 0 50px;
+            letter-spacing: -2px;
             text-align: center;
+            line-height: 1;
         }
 
         .links-container {
@@ -71,43 +64,41 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px; /* Больше пространства между ссылками */
+            gap: 25px; /* Плотнее друг к другу */
         }
 
         .link-item {
             text-decoration: none;
             font-weight: 700;
-            font-size: 36px; /* Огромный шрифт */
+            font-size: 42px; /* Увеличили кнопки */
             letter-spacing: -1px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             position: relative;
-            padding-bottom: 4px;
-            border-bottom: 3px solid transparent; /* Линия под текстом */
+            width: fit-content; /* Реакция только на текст */
+            text-align: center;
         }
 
-        /* Индивидуальные стили и переходы цветов */
-        
-        /* TikTok: Cyan -> Red */
-        .tiktok { color: #25F4EE; border-bottom-color: rgba(37, 244, 238, 0.3); }
-        .tiktok:hover { color: #FE2C55; border-bottom-color: #FE2C55; transform: scale(1.1); }
+        /* Тонкая настройка ховеров: минимальное увеличение */
+        .link-item:hover {
+            transform: scale(1.03); 
+        }
 
-        /* Telegram: Blue -> Light Blue */
-        .telegram { color: #0088CC; border-bottom-color: rgba(0, 136, 204, 0.3); }
-        .telegram:hover { color: #24A1DE; border-bottom-color: #24A1DE; transform: scale(1.1); }
+        .tiktok { color: #25F4EE; }
+        .tiktok:hover { color: #FE2C55; }
 
-        /* Instagram: Purple -> Pink */
-        .instagram { color: #6228d7; border-bottom-color: rgba(98, 40, 215, 0.3); }
-        .instagram:hover { color: #ee2a7b; border-bottom-color: #ee2a7b; transform: scale(1.1); }
+        .telegram { color: #0088CC; }
+        .telegram:hover { color: #24A1DE; }
 
-        /* YouTube: Red -> White */
-        .youtube { color: #FF0000; border-bottom-color: rgba(255, 0, 0, 0.3); }
-        .youtube:hover { color: #ffffff; border-bottom-color: #ffffff; transform: scale(1.1); }
+        .instagram { color: #6228d7; }
+        .instagram:hover { color: #ee2a7b; }
 
-        /* Адаптивность */
+        .youtube { color: #FF0000; }
+        .youtube:hover { color: #ffffff; }
+
         @media (max-width: 600px) {
-            h1 { font-size: 32px; }
-            .link-item { font-size: 28px; }
-            .avatar { width: 120px; height: 120px; }
+            h1 { font-size: 42px; }
+            .link-item { font-size: 32px; }
+            .avatar { width: 80px; height: 80px; }
         }
     </style>
 </head>
