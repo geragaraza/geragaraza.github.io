@@ -67,11 +67,11 @@
         /* Статичные элементы */
         .static-link { transform: none !important; }
 
-        /* Зум для кнопок */
+        /* Зум */
         .zoom-effect:hover { transform: scale(1.05); }
         a:active { transform: scale(0.95); opacity: 0.8; }
 
-        /* Аватарка (Белый круг) */
+        /* Аватарка */
         .avatar-circle {
             display: block; width: var(--avatar-size); height: var(--avatar-size);
             border-radius: 50%; background-color: #ffffff;
@@ -114,7 +114,7 @@
         <h1>Herman Harazha</h1>
     </a>
 
-    <a class="mail-link scramble-target-fast zoom-effect" onclick="copyEmail(this)">Geragaraza@gmail.com</a>
+    <a href="mailto:Geragaraza@gmail.com" class="mail-link scramble-target-fast zoom-effect">Geragaraza@gmail.com</a>
 
     <nav class="social-container">
         <a href="https://www.tiktok.com/@geragaraza" class="social-item tiktok scramble-target-slow zoom-effect">TikTok</a>
@@ -152,15 +152,6 @@
             document.querySelectorAll('.scramble-target-fast').forEach(el => runScramble(el, 250));
             document.querySelectorAll('.scramble-target-slow').forEach(el => runScramble(el, 500));
         });
-
-        function copyEmail(element) {
-            const email = "Geragaraza@gmail.com";
-            if (navigator.vibrate) navigator.vibrate(15);
-            navigator.clipboard.writeText(email).then(() => {
-                element.innerText = "Copied";
-                setTimeout(() => { element.innerText = email; }, 1000);
-            }).catch(console.error);
-        }
     </script>
 </body>
 </html>
