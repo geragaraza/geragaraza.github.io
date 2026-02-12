@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+
+    <title>Herman Harazha — Links</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <!-- SEO -->
+    <meta name="description" content="Connect with Herman Harazha. Official links and contact.">
+    <meta name="keywords" content="Herman Harazha, Geragaraza, links, contact">
+    <meta name="author" content="Herman Harazha">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://geragaraza.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Herman Harazha — Links">
+    <meta property="og:description" content="Connect with me on social media or reach out via email.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geragaraza.com/">
+    <meta property="og:image" content="https://geragaraza.com/preview.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Herman Harazha">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Herman Harazha — Links">
+    <meta name="twitter:description" content="Official links and social media channels.">
+    <meta name="twitter:image" content="https://geragaraza.com/preview.png">
+
+    <!-- DNS Prefetch for external links -->
+    <link rel="dns-prefetch" href="https://www.tiktok.com">
+    <link rel="dns-prefetch" href="https://t.me">
+    <link rel="dns-prefetch" href="https://www.instagram.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://www.pinterest.com">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Herman Harazha",
+        "url": "https://geragaraza.com",
+        "email": "mailto:Geragaraza@gmail.com",
+        "sameAs": [
+            "https://www.tiktok.com/@geragaraza",
+            "https://t.me/geragaraza",
+            "https://www.instagram.com/geragaraza",
+            "https://www.youtube.com/@geragaraza",
+            "https://www.pinterest.com/geragaraza/"
+        ]
+    }
+    </script>
+
+    <style>
+        /* ============================================
+           DESIGN TOKENS
+           ============================================ */
+        :root {
+            /* Layout */
+            --content-padding: 5vh;
+            --avatar-size: clamp(96px, 22vw, 140px);
+            --gap-avatar: 20px;
+            --gap-name-mail: 8px;
+            --gap-section: clamp(24px, 5vh, 48px);
+            --gap-social: 4px;
+
+            /* Typography */
+            --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            --font-name: clamp(34px, 10vw, 72px);
+            --font-email: clamp(22px, 6.5vw, 42px);
+            --font-social: clamp(32px, 10.5vw, 72px);
+            --weight-bold: 800;
+            --weight-semi: 600;
+            --tracking-tight: -0.03em;
+            --tracking-normal: -0.01em;
+
+            /* Colors */
+            --c-bg: #000000;
+            --c-text: #ffffff;
+            --c-text-dim: rgba(255, 255, 255, 0.5);
+            --c-focus: rgba(255, 255, 255, 0.4);
+
+            --c-email: #0A84FF;
+            --c-email-hover: #409CFF;
+            --c-tiktok: #25F4EE;
+            --c-tiktok-hover: #FE2C55;
+            --c-telegram: #0088CC;
+            --c-telegram-hover: #2AABEE;
+            --c-instagram: #833AB4;
+            --c-instagram-hover: #F77737;
+            --c-youtube: #FF0000;
+            --c-youtube-hover: #FFFFFF;
+            --c-pinterest: #E60023;
+            --c-pinterest-hover: #FFFFFF;
+
+            /* Animation */
+            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --duration-fast: 0.15s;
+            --duration-normal: 0.3s;
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            background-color: var(--c-bg);
+            color: var(--c-text);
+            font-family: var(--font-system);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100dvh;
+            width: 100%;
+            padding: var(--content-padding) 24px;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Subtle noise grain overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ============================================
+           LINKS — BASE
+           ============================================ */
+        a {
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+            user-select: none;
+            display: block;
+            text-align: center;
+            width: fit-content;
+            color: inherit;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--c-focus);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* ============================================
+           AVATAR
+           ============================================ */
+        .avatar {
+            width: var(--avatar-size);
+            height: var(--avatar-size);
+            border-radius: 50%;
+            background-color: #ffffff;
+            margin-bottom: var(--gap-avatar);
+            flex-shrink: 0;
+            opacity: 0;
+            animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+            animation-delay: 0.05s;
+        }
+
+        /* ============================================
+           NAME
+           ============================================ */
+        .name {
+            margin-bottom: var(--gap-name-mail);
+            opacity: 0;
+            animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+            animation-delay: 0.1s;
+        }
+
+        .name h1 {
+            font-size: var(--font-name);
+            font-weight: var(--weight-bold);
+            letter-spacing: var(--tracking-tight);
+            line-height: 1.05;
+            color: var(--c-text);
+        }
+
+        /* ============================================
+           EMAIL
+           ============================================ */
+        .email {
+            font-size: var(--font-email);
+            font-weight: var(--weight-semi);
+            letter-spacing: var(--tracking-normal);
+            color: var(--c-email);
+            padding: 6px 16px;
+            margin-bottom: var(--gap-section);
+            position: relative;
+            opacity: 0;
+            animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+            animation-delay: 0.15s;
+        }
+
+        /* ============================================
+           EMAIL — COPY TOOLTIP
+           ============================================ */
+        .email-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--gap-section);
+        }
+
+        .copy-toast {
+            position: absolute;
+            bottom: -28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--c-text-dim);
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .copy-toast.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ============================================
+           SOCIAL LINKS
+           ============================================ */
+        .socials {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--gap-social);
+            width: 100%;
+        }
+
+        .social-link {
+            font-size: var(--font-social);
+            font-weight: var(--weight-bold);
+            letter-spacing: var(--tracking-tight);
+            padding: 4px 16px;
+            transition: color var(--duration-fast) ease;
+            opacity: 0;
+            animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+        }
+
+        /* Staggered entrance delays */
+        .social-link:nth-child(1) { animation-delay: 0.2s; }
+        .social-link:nth-child(2) { animation-delay: 0.25s; }
+        .social-link:nth-child(3) { animation-delay: 0.3s; }
+        .social-link:nth-child(4) { animation-delay: 0.35s; }
+        .social-link:nth-child(5) { animation-delay: 0.4s; }
+
+        /* Platform colors */
+        .social-link[data-platform="tiktok"]    { color: var(--c-tiktok); }
+        .social-link[data-platform="telegram"]   { color: var(--c-telegram); }
+        .social-link[data-platform="instagram"]  { color: var(--c-instagram); }
+        .social-link[data-platform="youtube"]    { color: var(--c-youtube); }
+        .social-link[data-platform="pinterest"]  { color: var(--c-pinterest); }
+
+        /* Hover — only on devices that support it */
+        @media (hover: hover) and (pointer: fine) {
+            .social-link {
+                transition:
+                    color var(--duration-fast) ease,
+                    transform var(--duration-fast) var(--ease-out);
+            }
+
+            .social-link:hover {
+                transform: scale(1.02);
+            }
+
+            .social-link[data-platform="tiktok"]:hover    { color: var(--c-tiktok-hover); }
+            .social-link[data-platform="telegram"]:hover   { color: var(--c-telegram-hover); }
+            .social-link[data-platform="instagram"]:hover  { color: var(--c-instagram-hover); }
+            .social-link[data-platform="youtube"]:hover    { color: var(--c-youtube-hover); }
+            .social-link[data-platform="pinterest"]:hover  { color: var(--c-pinterest-hover); }
+
+            .email:hover {
+                color: var(--c-email-hover);
+            }
+        }
+
+        /* Active state — tap feedback */
+        .social-link:active {
+            transform: scale(0.97);
+            opacity: 0.75;
+        }
+
+        /* ============================================
+           ENTRANCE ANIMATION
+           ============================================ */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           REDUCED MOTION
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-delay: 0ms !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .avatar,
+            .name,
+            .email,
+            .social-link {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Avatar -->
+    <a href="https://geragaraza.com/" class="avatar" aria-label="Herman Harazha — Home"></a>
+
+    <!-- Name -->
+    <a href="https://geragaraza.com/" class="name" aria-label="Herman Harazha">
+        <h1>Herman Harazha</h1>
+    </a>
+
+    <!-- Email with copy-on-click -->
+    <div class="email-wrapper">
+        <a
+            href="mailto:Geragaraza@gmail.com"
+            class="email"
+            data-scramble
+            data-email="Geragaraza@gmail.com"
+            aria-label="Email: Geragaraza@gmail.com"
+        >Geragaraza@gmail.com</a>
+        <span class="copy-toast" aria-live="polite">Copied</span>
+    </div>
+
+    <!-- Social links -->
+    <nav class="socials" aria-label="Social media links">
+        <a href="https://www.tiktok.com/@geragaraza"
+           class="social-link"
+           data-platform="tiktok"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">TikTok</a>
+
+        <a href="https://t.me/geragaraza"
+           class="social-link"
+           data-platform="telegram"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">Telegram</a>
+
+        <a href="https://www.instagram.com/geragaraza"
+           class="social-link"
+           data-platform="instagram"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">Instagram</a>
+
+        <a href="https://www.youtube.com/@geragaraza"
+           class="social-link"
+           data-platform="youtube"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">YouTube</a>
+
+        <a href="https://www.pinterest.com/geragaraza/"
+           class="social-link"
+           data-platform="pinterest"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">Pinterest</a>
+    </nav>
+
+    <script>
+        (() => {
+            'use strict';
+
+            /* ─── Scramble Text Effect ─── */
+            const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%';
+
+            function scramble(element, duration = 400) {
+                const original = element.textContent;
+                const length = original.length;
+                const startTime = performance.now();
+
+                function tick(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const revealed = Math.floor(progress * length);
+
+                    let result = '';
+                    for (let i = 0; i < length; i++) {
+                        if (original[i] === ' ') {
+                            result += ' ';
+                        } else if (i < revealed) {
+                            result += original[i];
+                        } else {
+                            result += GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+                        }
+                    }
+
+                    element.textContent = result;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        element.textContent = original;
+                    }
+                }
+
+                requestAnimationFrame(tick);
+            }
+
+            /* ─── Copy Email ─── */
+            function setupCopyEmail() {
+                const emailLink = document.querySelector('.email');
+                const toast = document.querySelector('.copy-toast');
+                if (!emailLink || !toast) return;
+
+                let timeout;
+                emailLink.addEventListener('click', (e) => {
+                    /* On desktop: copy to clipboard. On mobile: let mailto: work. */
+                    if (navigator.clipboard && window.matchMedia('(hover: hover)').matches) {
+                        e.preventDefault();
+                        const email = emailLink.dataset.email || emailLink.textContent;
+                        navigator.clipboard.writeText(email).then(() => {
+                            toast.textContent = 'Copied';
+                            toast.classList.add('visible');
+                            clearTimeout(timeout);
+                            timeout = setTimeout(() => toast.classList.remove('visible'), 1500);
+                        });
+                    }
+                    /* On touch devices: default mailto: behavior */
+                });
+            }
+
+            /* ─── Init ─── */
+            function init() {
+                const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                if (!reducedMotion) {
+                    const elements = document.querySelectorAll('[data-scramble]');
+                    elements.forEach((el, i) => {
+                        const delay = el.classList.contains('email') ? 150 : 200 + i * 50;
+                        setTimeout(() => scramble(el, el.classList.contains('email') ? 250 : 450), delay);
+                    });
+                }
+
+                setupCopyEmail();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html>
