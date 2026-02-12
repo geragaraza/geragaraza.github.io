@@ -15,7 +15,7 @@
     <meta name="description" content="Connect with Herman Harazha. Official links and contact.">
     <meta name="keywords" content="Herman Harazha, Geragaraza, links, contact">
     <meta name="author" content="Herman Harazha">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#1b1b1b">
     <link rel="canonical" href="https://geragaraza.com/">
 
     <!-- Open Graph -->
@@ -33,14 +33,14 @@
     <meta name="twitter:description" content="Official links and social media channels.">
     <meta name="twitter:image" content="https://geragaraza.com/preview.png">
 
-    <!-- DNS Prefetch for external links -->
+    <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="https://www.tiktok.com">
     <link rel="dns-prefetch" href="https://t.me">
     <link rel="dns-prefetch" href="https://www.instagram.com">
     <link rel="dns-prefetch" href="https://www.youtube.com">
     <link rel="dns-prefetch" href="https://www.pinterest.com">
 
-    <!-- JSON-LD Structured Data -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -82,19 +82,22 @@
             --tracking-normal: -0.01em;
 
             /* Colors */
-            --c-bg: #000000;
+            --c-bg: #1b1b1b;
             --c-text: #ffffff;
-            --c-text-dim: rgba(255, 255, 255, 0.5);
-            --c-focus: rgba(255, 255, 255, 0.4);
+            --c-text-dim: rgba(255, 255, 255, 0.4);
+            --c-focus: rgba(255, 255, 255, 0.3);
 
-            --c-email: #0A84FF;
-            --c-email-hover: #409CFF;
+            /* Email */
+            --c-email: #00a7ff;
+            --c-email-hover: #006ed1;
+
+            /* Socials — main / hover */
             --c-tiktok: #25F4EE;
             --c-tiktok-hover: #FE2C55;
             --c-telegram: #0088CC;
-            --c-telegram-hover: #2AABEE;
-            --c-instagram: #833AB4;
-            --c-instagram-hover: #F77737;
+            --c-telegram-hover: #FFFFFF;
+            --c-instagram: #5851DB;
+            --c-instagram-hover: #FCAF45;
             --c-youtube: #FF0000;
             --c-youtube-hover: #FFFFFF;
             --c-pinterest: #E60023;
@@ -102,9 +105,7 @@
 
             /* Animation */
             --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
             --duration-fast: 0.15s;
-            --duration-normal: 0.3s;
         }
 
         /* ============================================
@@ -140,12 +141,12 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Subtle noise grain overlay */
+        /* Subtle grain */
         body::after {
             content: "";
             position: fixed;
             inset: 0;
-            opacity: 0.03;
+            opacity: 0.025;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             background-repeat: repeat;
             pointer-events: none;
@@ -183,9 +184,6 @@
             background-color: #ffffff;
             margin-bottom: var(--gap-avatar);
             flex-shrink: 0;
-            opacity: 0;
-            animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
-            animation-delay: 0.05s;
         }
 
         /* ============================================
@@ -193,9 +191,6 @@
            ============================================ */
         .name {
             margin-bottom: var(--gap-name-mail);
-            opacity: 0;
-            animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
-            animation-delay: 0.1s;
         }
 
         .name h1 {
@@ -207,49 +202,53 @@
         }
 
         /* ============================================
-           EMAIL
+           EMAIL — with inline copy/restore animation
            ============================================ */
+        .email-wrapper {
+            position: relative;
+            margin-bottom: var(--gap-section);
+        }
+
         .email {
             font-size: var(--font-email);
             font-weight: var(--weight-semi);
             letter-spacing: var(--tracking-normal);
             color: var(--c-email);
             padding: 6px 16px;
-            margin-bottom: var(--gap-section);
             position: relative;
-            opacity: 0;
-            animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
-            animation-delay: 0.15s;
+            display: block;
+            min-height: 1.4em;
         }
 
-        /* ============================================
-           EMAIL — COPY TOOLTIP
-           ============================================ */
-        .email-wrapper {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: var(--gap-section);
-        }
-
-        .copy-toast {
-            position: absolute;
-            bottom: -28px;
-            left: 50%;
-            transform: translateX(-50%) translateY(4px);
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--c-text-dim);
-            opacity: 0;
+        .email-text,
+        .email-copied {
+            display: block;
             transition: opacity 0.2s ease, transform 0.2s ease;
-            pointer-events: none;
-            white-space: nowrap;
         }
 
-        .copy-toast.visible {
+        .email-copied {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(6px);
+            pointer-events: none;
+            font-size: var(--font-email);
+            font-weight: var(--weight-semi);
+            color: var(--c-email);
+        }
+
+        /* State: copied */
+        .email.is-copied .email-text {
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+
+        .email.is-copied .email-copied {
             opacity: 1;
-            transform: translateX(-50%) translateY(0);
+            transform: translateY(0);
         }
 
         /* ============================================
@@ -268,17 +267,23 @@
             font-weight: var(--weight-bold);
             letter-spacing: var(--tracking-tight);
             padding: 4px 16px;
+            position: relative;
             transition: color var(--duration-fast) ease;
-            opacity: 0;
-            animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
         }
 
-        /* Staggered entrance delays */
-        .social-link:nth-child(1) { animation-delay: 0.2s; }
-        .social-link:nth-child(2) { animation-delay: 0.25s; }
-        .social-link:nth-child(3) { animation-delay: 0.3s; }
-        .social-link:nth-child(4) { animation-delay: 0.35s; }
-        .social-link:nth-child(5) { animation-delay: 0.4s; }
+        /* Underline — shows this is clickable */
+        .social-link::after {
+            content: "";
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 2px;
+            height: 2px;
+            background: currentColor;
+            opacity: 0.25;
+            border-radius: 1px;
+            transition: opacity var(--duration-fast) ease;
+        }
 
         /* Platform colors */
         .social-link[data-platform="tiktok"]    { color: var(--c-tiktok); }
@@ -287,7 +292,9 @@
         .social-link[data-platform="youtube"]    { color: var(--c-youtube); }
         .social-link[data-platform="pinterest"]  { color: var(--c-pinterest); }
 
-        /* Hover — only on devices that support it */
+        /* ============================================
+           HOVER — desktop only
+           ============================================ */
         @media (hover: hover) and (pointer: fine) {
             .social-link {
                 transition:
@@ -297,6 +304,10 @@
 
             .social-link:hover {
                 transform: scale(1.02);
+            }
+
+            .social-link:hover::after {
+                opacity: 0.5;
             }
 
             .social-link[data-platform="tiktok"]:hover    { color: var(--c-tiktok-hover); }
@@ -310,24 +321,10 @@
             }
         }
 
-        /* Active state — tap feedback */
+        /* Active — tap feedback */
         .social-link:active {
             transform: scale(0.97);
             opacity: 0.75;
-        }
-
-        /* ============================================
-           ENTRANCE ANIMATION
-           ============================================ */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         /* ============================================
@@ -338,16 +335,7 @@
             *::before,
             *::after {
                 animation-duration: 0.01ms !important;
-                animation-delay: 0ms !important;
                 transition-duration: 0.01ms !important;
-            }
-
-            .avatar,
-            .name,
-            .email,
-            .social-link {
-                opacity: 1;
-                transform: none;
             }
         }
     </style>
@@ -357,21 +345,23 @@
     <!-- Avatar -->
     <a href="https://geragaraza.com/" class="avatar" aria-label="Herman Harazha — Home"></a>
 
-    <!-- Name -->
+    <!-- Name — no animation, instantly visible -->
     <a href="https://geragaraza.com/" class="name" aria-label="Herman Harazha">
         <h1>Herman Harazha</h1>
     </a>
 
-    <!-- Email with copy-on-click -->
+    <!-- Email — copy on desktop, mailto on mobile -->
     <div class="email-wrapper">
         <a
             href="mailto:Geragaraza@gmail.com"
             class="email"
-            data-scramble
+            id="emailLink"
             data-email="Geragaraza@gmail.com"
             aria-label="Email: Geragaraza@gmail.com"
-        >Geragaraza@gmail.com</a>
-        <span class="copy-toast" aria-live="polite">Copied</span>
+        >
+            <span class="email-text" data-scramble>Geragaraza@gmail.com</span>
+            <span class="email-copied">Copied</span>
+        </a>
     </div>
 
     <!-- Social links -->
@@ -417,9 +407,9 @@
             'use strict';
 
             /* ─── Scramble Text Effect ─── */
-            const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%';
+            const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#&$';
 
-            function scramble(element, duration = 400) {
+            function scramble(element, duration) {
                 const original = element.textContent;
                 const length = original.length;
                 const startTime = performance.now();
@@ -431,8 +421,8 @@
 
                     let result = '';
                     for (let i = 0; i < length; i++) {
-                        if (original[i] === ' ') {
-                            result += ' ';
+                        if (original[i] === ' ' || original[i] === '@' || original[i] === '.') {
+                            result += original[i];
                         } else if (i < revealed) {
                             result += original[i];
                         } else {
@@ -452,26 +442,28 @@
                 requestAnimationFrame(tick);
             }
 
-            /* ─── Copy Email ─── */
-            function setupCopyEmail() {
-                const emailLink = document.querySelector('.email');
-                const toast = document.querySelector('.copy-toast');
-                if (!emailLink || !toast) return;
+            /* ─── Copy Email (desktop) / mailto (mobile) ─── */
+            function setupEmail() {
+                const link = document.getElementById('emailLink');
+                if (!link) return;
 
+                const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
                 let timeout;
-                emailLink.addEventListener('click', (e) => {
-                    /* On desktop: copy to clipboard. On mobile: let mailto: work. */
-                    if (navigator.clipboard && window.matchMedia('(hover: hover)').matches) {
+
+                link.addEventListener('click', (e) => {
+                    if (isDesktop && navigator.clipboard) {
                         e.preventDefault();
-                        const email = emailLink.dataset.email || emailLink.textContent;
+                        const email = link.dataset.email;
+
                         navigator.clipboard.writeText(email).then(() => {
-                            toast.textContent = 'Copied';
-                            toast.classList.add('visible');
+                            link.classList.add('is-copied');
                             clearTimeout(timeout);
-                            timeout = setTimeout(() => toast.classList.remove('visible'), 1500);
+                            timeout = setTimeout(() => {
+                                link.classList.remove('is-copied');
+                            }, 1200);
                         });
                     }
-                    /* On touch devices: default mailto: behavior */
+                    /* On touch/mobile: default mailto: fires */
                 });
             }
 
@@ -480,14 +472,18 @@
                 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
                 if (!reducedMotion) {
-                    const elements = document.querySelectorAll('[data-scramble]');
-                    elements.forEach((el, i) => {
-                        const delay = el.classList.contains('email') ? 150 : 200 + i * 50;
-                        setTimeout(() => scramble(el, el.classList.contains('email') ? 250 : 450), delay);
+                    /* Email scramble — fast */
+                    const emailText = document.querySelector('.email-text[data-scramble]');
+                    if (emailText) scramble(emailText, 300);
+
+                    /* Social links scramble — slightly slower, staggered */
+                    const socials = document.querySelectorAll('.social-link[data-scramble]');
+                    socials.forEach((el, i) => {
+                        setTimeout(() => scramble(el, 500), i * 60);
                     });
                 }
 
-                setupCopyEmail();
+                setupEmail();
             }
 
             if (document.readyState === 'loading') {
