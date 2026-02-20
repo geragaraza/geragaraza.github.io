@@ -1,0 +1,100 @@
+AUDIT — geragaraza.com
+Date: 2026-02-20
+Repo: github.com/geragaraza/geragaraza.github.io
+Branch merged: claude/refine-multi-ai-website-vwIxb → main (PR #1)
+File changed: index.html (single-file site, no dependencies)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CHANGES MADE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. BACKGROUND COLOR
+   Before: #000000 (pure black)
+   After:  #1f1f1f (dark gray)
+   Also:   theme-color meta tag updated to match
+
+2. PINTEREST — ADDED
+   New button added below YouTube
+   URL: https://www.pinterest.com/geragaraza
+   Color default: #e60022
+   Color hover:   #ffffff
+   Added to JSON-LD sameAs array
+   Added dns-prefetch for pinterest.com
+
+3. INSTAGRAM COLORS UPDATED
+   Color default: #5851DB → #4a5df9
+   Color hover:   #FCAF45 → #ff2f40
+
+4. EMAIL BUTTON BEHAVIOR FIXED
+   Before: desktop = copy to clipboard only, mobile = mailto:
+   After:  all devices open mail client (mailto: fires always)
+           clipboard copy happens silently in background (no animation)
+   Removed: .email-copied, .is-copied CSS classes (unused after fix)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REMOVED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- .email-copied CSS class and animation
+- .is-copied CSS class
+- Copy-feedback JS logic (toast/state toggle)
+- Unused keyframe animations tied to copy UI
+- ~66 lines of code net removed vs 35 added
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CURRENT SITE STATE (confirmed live)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+URL: geragaraza.com
+Hosted: GitHub Pages, custom domain via CNAME
+
+Layout (top to bottom):
+  [avatar circle — white, placeholder]
+  Herman Harazha  (bold, large)
+  Geragaraza@gmail.com  (blue, opens mail client + copies)
+  Telegram   → t.me/geragaraza
+  TikTok     → tiktok.com/@geragaraza
+  Instagram  → instagram.com/geragaraza
+  YouTube    → youtube.com/@geragaraza
+  Pinterest  → pinterest.com/geragaraza
+
+Colors (default / hover):
+  Telegram:   #1c93e3 / #ffffff
+  TikTok:     #25F4EE / #FE2C55
+  Instagram:  #4a5df9 / #ff2f40
+  YouTube:    #FF0000 / #FFFFFF
+  Pinterest:  #e60022 / #ffffff
+  Email:      #00a7ff / #006ed1
+
+Tech:
+  - Single HTML file, zero external dependencies
+  - Text scramble effect on load (requestAnimationFrame)
+  - Hover states scoped to (hover: hover) — no sticky hover on mobile
+  - Respects prefers-reduced-motion
+  - JSON-LD Person schema for SEO
+  - Open Graph + Twitter Card meta
+  - Subtle CSS grain texture overlay
+
+Files in repo:
+  index.html     — main page
+  404.html       — custom error page
+  icon.png       — favicon
+  preview.png    — OG/Twitter preview image
+  CNAME          — custom domain (geragaraza.com)
+  robots.txt     — search engine directives
+  sitemap.xml    — sitemap
+  README.md      — repo description
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NOT DONE / INTENTIONALLY SKIPPED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Light mode (prefers-color-scheme: light) — not requested
+- PWA / manifest — not needed for link-in-bio
+- Analytics — not requested
+- Deep linking / UTM params — not needed
+- Avatar image — placeholder circle remains (no image provided)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+END OF AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
