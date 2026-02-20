@@ -13,7 +13,7 @@
     <meta name="description" content="Connect with Herman Harazha. Official links and contact.">
     <meta name="keywords" content="Herman Harazha, Geragaraza, links, contact">
     <meta name="author" content="Herman Harazha">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#1f1f1f">
     <link rel="canonical" href="https://geragaraza.com/">
 
     <meta property="og:title" content="Herman Harazha — Links">
@@ -33,6 +33,7 @@
     <link rel="dns-prefetch" href="https://t.me">
     <link rel="dns-prefetch" href="https://www.instagram.com">
     <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://www.pinterest.com">
 
     <script type="application/ld+json">
     {
@@ -45,7 +46,8 @@
             "https://t.me/geragaraza",
             "https://www.tiktok.com/@geragaraza",
             "https://www.instagram.com/geragaraza",
-            "https://www.youtube.com/@geragaraza"
+            "https://www.youtube.com/@geragaraza",
+            "https://www.pinterest.com/geragaraza"
         ]
     }
     </script>
@@ -74,7 +76,7 @@
             --tracking-normal: -0.01em;
 
             /* Colors */
-            --c-bg: #000000;
+            --c-bg: #1f1f1f;
             --c-text: #ffffff;
             --c-text-dim: rgba(255, 255, 255, 0.4);
             --c-focus: rgba(255, 255, 255, 0.3);
@@ -86,16 +88,18 @@
             /* Socials — main / hover */
             --c-tiktok: #25F4EE;
             --c-tiktok-hover: #FE2C55;
-            
-            /* --- UPDATED TELEGRAM COLOR --- */
-            --c-telegram: #1c93e3; 
-            --c-telegram-hover: #ffffff;
-            /* ------------------------------ */
 
-            --c-instagram: #5851DB;
-            --c-instagram-hover: #FCAF45;
+            --c-telegram: #1c93e3;
+            --c-telegram-hover: #ffffff;
+
+            --c-instagram: #4a5df9;
+            --c-instagram-hover: #ff2f40;
+
             --c-youtube: #FF0000;
             --c-youtube-hover: #FFFFFF;
+
+            --c-pinterest: #e60022;
+            --c-pinterest-hover: #ffffff;
 
             /* Animation */
             --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -196,10 +200,9 @@
         }
 
         /* ============================================
-           EMAIL — with inline copy/restore animation
+           EMAIL
            ============================================ */
         .email-wrapper {
-            position: relative;
             margin-bottom: var(--gap-section);
         }
 
@@ -209,40 +212,8 @@
             letter-spacing: var(--tracking-normal);
             color: var(--c-email);
             padding: 6px 16px;
-            position: relative;
             display: block;
-            min-height: 1.4em;
-        }
-
-        .email-text,
-        .email-copied {
-            display: block;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-
-        .email-copied {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(6px);
-            pointer-events: none;
-            font-size: var(--font-email);
-            font-weight: var(--weight-semi);
-            color: var(--c-email);
-        }
-
-        /* State: copied */
-        .email.is-copied .email-text {
-            opacity: 0;
-            transform: translateY(-6px);
-        }
-
-        .email.is-copied .email-copied {
-            opacity: 1;
-            transform: translateY(0);
+            transition: color var(--duration-fast) ease;
         }
 
         /* ============================================
@@ -280,10 +251,11 @@
         }
 
         /* Platform colors */
-        .social-link[data-platform="tiktok"]    { color: var(--c-tiktok); }
+        .social-link[data-platform="tiktok"]     { color: var(--c-tiktok); }
         .social-link[data-platform="telegram"]   { color: var(--c-telegram); }
         .social-link[data-platform="instagram"]  { color: var(--c-instagram); }
         .social-link[data-platform="youtube"]    { color: var(--c-youtube); }
+        .social-link[data-platform="pinterest"]  { color: var(--c-pinterest); }
 
         /* ============================================
            HOVER — desktop only
@@ -303,10 +275,11 @@
                 opacity: 0.5;
             }
 
-            .social-link[data-platform="tiktok"]:hover    { color: var(--c-tiktok-hover); }
+            .social-link[data-platform="tiktok"]:hover     { color: var(--c-tiktok-hover); }
             .social-link[data-platform="telegram"]:hover   { color: var(--c-telegram-hover); }
             .social-link[data-platform="instagram"]:hover  { color: var(--c-instagram-hover); }
             .social-link[data-platform="youtube"]:hover    { color: var(--c-youtube-hover); }
+            .social-link[data-platform="pinterest"]:hover  { color: var(--c-pinterest-hover); }
 
             .email:hover {
                 color: var(--c-email-hover);
@@ -348,8 +321,7 @@
             data-email="Geragaraza@gmail.com"
             aria-label="Email: Geragaraza@gmail.com"
         >
-            <span class="email-text" data-scramble>Geragaraza@gmail.com</span>
-            <span class="email-copied">Copied</span>
+            <span data-scramble>Geragaraza@gmail.com</span>
         </a>
     </div>
 
@@ -381,6 +353,13 @@
            data-scramble
            target="_blank"
            rel="noopener noreferrer">YouTube</a>
+
+        <a href="https://www.pinterest.com/geragaraza"
+           class="social-link"
+           data-platform="pinterest"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">Pinterest</a>
     </nav>
 
     <script>
@@ -423,28 +402,18 @@
                 requestAnimationFrame(tick);
             }
 
-            /* ─── Copy Email (desktop) / mailto (mobile) ─── */
+            /* ─── Email: open mail client + silently copy to clipboard ─── */
             function setupEmail() {
                 const link = document.getElementById('emailLink');
                 if (!link) return;
 
-                const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-                let timeout;
+                const email = link.dataset.email;
 
-                link.addEventListener('click', (e) => {
-                    if (isDesktop && navigator.clipboard) {
-                        e.preventDefault();
-                        const email = link.dataset.email;
-
-                        navigator.clipboard.writeText(email).then(() => {
-                            link.classList.add('is-copied');
-                            clearTimeout(timeout);
-                            timeout = setTimeout(() => {
-                                link.classList.remove('is-copied');
-                            }, 1200);
-                        });
+                link.addEventListener('click', () => {
+                    /* mailto: fires normally — opens mail client on all devices */
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(email).catch(() => {});
                     }
-                    /* On touch/mobile: default mailto: fires */
                 });
             }
 
@@ -454,7 +423,7 @@
 
                 if (!reducedMotion) {
                     /* Email scramble — fast */
-                    const emailText = document.querySelector('.email-text[data-scramble]');
+                    const emailText = document.querySelector('#emailLink [data-scramble]');
                     if (emailText) scramble(emailText, 300);
 
                     /* Social links scramble — slightly slower, staggered */
