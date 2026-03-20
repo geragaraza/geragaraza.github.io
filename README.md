@@ -13,16 +13,16 @@ Personal link-in-bio page — single HTML file, zero dependencies, hosted on Git
 
 ## Files
 
-
-├── index.html Main page
-├── 404.html Custom error page
-├── icon.png Favicon
-├── preview.png OG/Twitter preview image
-├── CNAME Custom domain config
-├── robots.txt Search engine directives
-├── sitemap.xml Sitemap
-└── .nojekyll Bypass Jekyll processing
-
+```
+├── index.html      Main page
+├── 404.html        Custom error page
+├── icon.png        Favicon
+├── preview.png     OG/Twitter preview image
+├── CNAME           Custom domain config
+├── robots.txt      Search engine directives
+├── sitemap.xml     Sitemap
+└── .nojekyll       Bypass Jekyll processing
+```
 
 ## License
 
