@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+
+    <title>Herman Harazha — Links</title>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <meta name="description" content="Connect with Herman Harazha. Official links and contact.">
+    <meta name="keywords" content="Herman Harazha, Geragaraza, links, contact">
+    <meta name="author" content="Herman Harazha">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://geragaraza.com/">
+
+    <meta property="og:title" content="Herman Harazha — Links">
+    <meta property="og:description" content="Connect with me on social media or reach out via email.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geragaraza.com/">
+    <meta property="og:image" content="https://geragaraza.com/preview.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Herman Harazha">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Herman Harazha — Links">
+    <meta name="twitter:description" content="Official links and social media channels.">
+    <meta name="twitter:image" content="https://geragaraza.com/preview.png">
+
+    <link rel="dns-prefetch" href="https://www.tiktok.com">
+    <link rel="dns-prefetch" href="https://t.me">
+    <link rel="dns-prefetch" href="https://www.instagram.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Herman Harazha",
+        "url": "https://geragaraza.com",
+        "email": "mailto:Geragaraza@gmail.com",
+        "sameAs": [
+            "https://t.me/geragaraza",
+            "https://www.tiktok.com/@geragaraza",
+            "https://www.instagram.com/geragaraza",
+            "https://www.youtube.com/@geragaraza"
+        ]
+    }
+    </script>
+
+    <style>
+        /* ============================================
+           DESIGN TOKENS
+           ============================================ */
+        :root {
+            /* Layout */
+            --content-padding: 5vh;
+            --avatar-size: clamp(96px, 22vw, 140px);
+            --gap-avatar: 20px;
+            --gap-name-mail: 8px;
+            --gap-section: clamp(24px, 5vh, 48px);
+            --gap-social: 4px;
+
+            /* Typography */
+            --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            --font-name: clamp(34px, 10vw, 72px);
+            --font-email: clamp(22px, 6.5vw, 42px);
+            --font-social: clamp(32px, 10.5vw, 72px);
+            --weight-bold: 800;
+            --weight-semi: 600;
+            --tracking-tight: -0.03em;
+            --tracking-normal: -0.01em;
+
+            /* Colors */
+            --c-bg: #000000;
+            --c-text: #ffffff;
+            --c-text-dim: rgba(255, 255, 255, 0.4);
+            --c-focus: rgba(255, 255, 255, 0.3);
+
+            /* Email */
+            --c-email: #0093ff;
+            --c-email-hover: #ffffff;
+
+            /* Socials — main / hover */
+            --c-tiktok: #2cccd3;
+            --c-tiktok-hover: #f1214a;
+
+            --c-telegram: #1c93e3;
+            --c-telegram-hover: #ffffff;
+
+            --c-instagram: #4a5df9;
+            --c-instagram-hover: #ff2f40;
+
+            --c-youtube: #ff0032;
+            --c-youtube-hover: #ffffff;
+
+            /* Animation */
+            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --duration-fast: 0.15s;
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            background-color: var(--c-bg);
+            color: var(--c-text);
+            font-family: var(--font-system);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100dvh;
+            width: 100%;
+            padding: var(--content-padding) 24px;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Subtle grain */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ============================================
+           LINKS — BASE
+           ============================================ */
+        a {
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+            user-select: none;
+            display: block;
+            text-align: center;
+            width: fit-content;
+            color: inherit;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--c-focus);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* ============================================
+           AVATAR
+           ============================================ */
+        .avatar {
+            width: var(--avatar-size);
+            height: var(--avatar-size);
+            border-radius: 50%;
+            background-color: #ffffff;
+            margin-bottom: var(--gap-avatar);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           NAME
+           ============================================ */
+        .name {
+            margin-bottom: var(--gap-name-mail);
+        }
+
+        .name h1 {
+            font-size: var(--font-name);
+            font-weight: var(--weight-bold);
+            letter-spacing: var(--tracking-tight);
+            line-height: 1.05;
+            color: var(--c-text);
+        }
+
+        /* ============================================
+           EMAIL
+           ============================================ */
+        .email-wrapper {
+            margin-bottom: var(--gap-section);
+        }
+
+        .email {
+            font-size: var(--font-email);
+            font-weight: var(--weight-semi);
+            letter-spacing: var(--tracking-normal);
+            color: var(--c-email);
+            padding: 6px 16px;
+            display: block;
+            transition: color var(--duration-fast) ease;
+        }
+
+        /* ============================================
+           SOCIAL LINKS
+           ============================================ */
+        .socials {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--gap-social);
+            width: 100%;
+        }
+
+        .social-link {
+            font-size: var(--font-social);
+            font-weight: var(--weight-bold);
+            letter-spacing: var(--tracking-tight);
+            padding: 4px 16px;
+            position: relative;
+            transition: color var(--duration-fast) ease;
+        }
+
+        /* Underline — shows this is clickable */
+        .social-link::after {
+            content: "";
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 2px;
+            height: 2px;
+            background: currentColor;
+            opacity: 0.25;
+            border-radius: 1px;
+            transition: opacity var(--duration-fast) ease;
+        }
+
+        /* Platform colors */
+        .social-link[data-platform="tiktok"]     { color: var(--c-tiktok); }
+        .social-link[data-platform="telegram"]   { color: var(--c-telegram); }
+        .social-link[data-platform="instagram"]  { color: var(--c-instagram); }
+        .social-link[data-platform="youtube"]    { color: var(--c-youtube); }
+
+        /* ============================================
+           HOVER — desktop only
+           ============================================ */
+        @media (hover: hover) and (pointer: fine) {
+            .social-link {
+                transition:
+                    color var(--duration-fast) ease,
+                    transform var(--duration-fast) var(--ease-out);
+            }
+
+            .social-link:hover {
+                transform: scale(1.02);
+            }
+
+            .social-link:hover::after {
+                opacity: 0.5;
+            }
+
+            .social-link[data-platform="tiktok"]:hover     { color: var(--c-tiktok-hover); }
+            .social-link[data-platform="telegram"]:hover   { color: var(--c-telegram-hover); }
+            .social-link[data-platform="instagram"]:hover  { color: var(--c-instagram-hover); }
+            .social-link[data-platform="youtube"]:hover    { color: var(--c-youtube-hover); }
+
+            .email:hover {
+                color: var(--c-email-hover);
+            }
+        }
+
+        /* Active — tap feedback */
+        .social-link:active {
+            transform: scale(0.97);
+            opacity: 0.75;
+        }
+
+        /* ============================================
+           REDUCED MOTION
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://geragaraza.com/" class="avatar" aria-label="Herman Harazha — Home"></a>
+
+    <a href="https://geragaraza.com/" class="name" aria-label="Herman Harazha">
+        <h1>Herman Harazha</h1>
+    </a>
+
+    <div class="email-wrapper">
+        <a
+            href="mailto:Geragaraza@gmail.com"
+            class="email"
+            id="emailLink"
+            data-email="Geragaraza@gmail.com"
+            aria-label="Email: Geragaraza@gmail.com"
+        >
+            <span data-scramble>Geragaraza@gmail.com</span>
+        </a>
+    </div>
+
+    <nav class="socials" aria-label="Social media links">
+        <a href="https://t.me/geragaraza"
+           class="social-link"
+           data-platform="telegram"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">Telegram</a>
+
+        <a href="https://www.tiktok.com/@geragaraza"
+           class="social-link"
+           data-platform="tiktok"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">TikTok</a>
+
+        <a href="https://www.instagram.com/geragaraza"
+           class="social-link"
+           data-platform="instagram"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">Instagram</a>
+
+        <a href="https://www.youtube.com/@geragaraza"
+           class="social-link"
+           data-platform="youtube"
+           data-scramble
+           target="_blank"
+           rel="noopener noreferrer">YouTube</a>
+
+    </nav>
+
+    <script>
+        (() => {
+            'use strict';
+
+            /* ─── Scramble Text Effect ─── */
+            const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#&$';
+
+            function scramble(element, duration) {
+                const original = element.textContent;
+                const length = original.length;
+                const startTime = performance.now();
+
+                function tick(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const revealed = Math.floor(progress * length);
+
+                    let result = '';
+                    for (let i = 0; i < length; i++) {
+                        if (original[i] === ' ' || original[i] === '@' || original[i] === '.') {
+                            result += original[i];
+                        } else if (i < revealed) {
+                            result += original[i];
+                        } else {
+                            result += GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+                        }
+                    }
+
+                    element.textContent = result;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        element.textContent = original;
+                    }
+                }
+
+                requestAnimationFrame(tick);
+            }
+
+            /* ─── Email: open mail client + silently copy to clipboard ─── */
+            function setupEmail() {
+                const link = document.getElementById('emailLink');
+                if (!link) return;
+
+                const email = link.dataset.email;
+
+                link.addEventListener('click', () => {
+                    /* mailto: fires normally — opens mail client on all devices */
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(email).catch(() => {});
+                    }
+                });
+            }
+
+            /* ─── Init ─── */
+            function init() {
+                const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                if (!reducedMotion) {
+                    /* Email scramble — fast */
+                    const emailText = document.querySelector('#emailLink [data-scramble]');
+                    if (emailText) scramble(emailText, 300);
+
+                    /* Social links scramble — slightly slower, staggered */
+                    const socials = document.querySelectorAll('.social-link[data-scramble]');
+                    socials.forEach((el, i) => {
+                        setTimeout(() => scramble(el, 500), i * 60);
+                    });
+                }
+
+                setupEmail();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"4728e3fd6ff21cf7635dd8e96567f7dd"})});</script>
+</body>
+</html>
