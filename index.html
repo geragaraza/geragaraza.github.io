@@ -151,9 +151,7 @@
         .overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
+            background: #000;
             z-index: 10;
             cursor: pointer;
             opacity: 0;
@@ -164,6 +162,7 @@
         .overlay.open {
             opacity: 1;
             visibility: visible;
+            transition: opacity 0.1s ease, visibility 0.1s ease;
         }
 
         @media (prefers-reduced-motion: reduce) {
