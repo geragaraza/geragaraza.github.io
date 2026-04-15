@@ -171,12 +171,7 @@
             height: min(70vmin, 500px);
             border-radius: 50%;
             background: #fff;
-            transform: scale(0.3);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .overlay.open .avatar-full {
-            transform: scale(1);
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -202,14 +197,31 @@
     </div>
     <script>
         var overlay = document.getElementById('overlay');
+        var avatarFull = document.querySelector('.avatar-full');
+        var origin = '';
         document.getElementById('avatar').addEventListener('click', function () {
+            var r = this.getBoundingClientRect();
+            var vmin = Math.min(window.innerWidth, window.innerHeight);
+            var full = Math.min(vmin * 0.7, 500);
+            var dx = r.left + r.width / 2 - window.innerWidth / 2;
+            var dy = r.top + r.height / 2 - window.innerHeight / 2;
+            var s = r.width / full;
+            origin = 'translate(' + dx + 'px,' + dy + 'px) scale(' + s + ')';
+            avatarFull.style.transition = 'none';
+            avatarFull.style.transform = origin;
+            avatarFull.offsetHeight;
+            avatarFull.style.transition = '';
+            avatarFull.style.transform = 'none';
             overlay.classList.add('open');
         });
-        overlay.addEventListener('click', function () {
+        function close() {
+            if (!overlay.classList.contains('open')) return;
+            avatarFull.style.transform = origin;
             overlay.classList.remove('open');
-        });
+        }
+        overlay.addEventListener('click', close);
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') overlay.classList.remove('open');
+            if (e.key === 'Escape') close();
         });
         document.getElementById('name').addEventListener('click', function () {
             navigator.clipboard?.writeText('Herman Harazha').catch(function () {});
