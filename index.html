@@ -89,7 +89,6 @@
             line-height: 1.1;
             text-align: center;
             margin-bottom: 8px;
-            cursor: pointer;
         }
 
         a {
@@ -146,7 +145,7 @@
             .threads:hover   { color: #fff; }
         }
 
-        .avatar:active, h1:active, .email:active, .social:active { opacity: 0.7; }
+        .avatar:active, .email:active, .social:active { opacity: 0.7; }
 
         .overlay {
             position: fixed;
@@ -175,7 +174,7 @@
 </head>
 <body>
     <div class="avatar" id="avatar"></div>
-    <h1 id="name">Herman Harazha</h1>
+    <h1>Herman Harazha</h1>
     <a href="mailto:geragaraza@gmail.com" class="email">geragaraza@gmail.com</a>
     <nav aria-label="Social links">
         <a href="https://www.tiktok.com/@geragaraza" class="social tiktok" target="_blank" rel="noopener noreferrer">tiktok.com/@geragaraza</a>
@@ -209,9 +208,6 @@
         overlay.addEventListener('click', close);
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') close();
-        });
-        document.getElementById('name').addEventListener('click', function () {
-            navigator.clipboard?.writeText('Herman Harazha').catch(function () {});
         });
         document.querySelector('.email')?.addEventListener('click', function () {
             navigator.clipboard?.writeText('geragaraza@gmail.com').catch(function () {});
