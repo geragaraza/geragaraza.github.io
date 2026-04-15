@@ -197,9 +197,10 @@
     </div>
     <script>
         var overlay = document.getElementById('overlay');
+        var avatar = document.getElementById('avatar');
         var avatarFull = document.querySelector('.avatar-full');
         var origin = '';
-        document.getElementById('avatar').addEventListener('click', function () {
+        avatar.addEventListener('click', function () {
             var r = this.getBoundingClientRect();
             var vmin = Math.min(window.innerWidth, window.innerHeight);
             var full = Math.min(vmin * 0.7, 500);
@@ -212,12 +213,14 @@
             avatarFull.offsetHeight;
             avatarFull.style.transition = '';
             avatarFull.style.transform = 'none';
+            avatar.style.opacity = '0';
             overlay.classList.add('open');
         });
         function close() {
             if (!overlay.classList.contains('open')) return;
             avatarFull.style.transform = origin;
             overlay.classList.remove('open');
+            setTimeout(function () { avatar.style.opacity = ''; }, 300);
         }
         overlay.addEventListener('click', close);
         document.addEventListener('keydown', function (e) {
