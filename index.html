@@ -148,12 +148,22 @@
         .overlay {
             position: fixed;
             inset: 0;
-            background: #000;
-            display: none;
+            background: rgba(0, 0, 0, 0.9);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10;
             cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .overlay.open {
+            opacity: 1;
+            visibility: visible;
         }
 
         .avatar-full {
@@ -161,6 +171,12 @@
             height: min(70vmin, 500px);
             border-radius: 50%;
             background: #fff;
+            transform: scale(0.3);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .overlay.open .avatar-full {
+            transform: scale(1);
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -187,13 +203,13 @@
     <script>
         var overlay = document.getElementById('overlay');
         document.getElementById('avatar').addEventListener('click', function () {
-            overlay.style.display = 'flex';
+            overlay.classList.add('open');
         });
         overlay.addEventListener('click', function () {
-            overlay.style.display = 'none';
+            overlay.classList.remove('open');
         });
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') overlay.style.display = 'none';
+            if (e.key === 'Escape') overlay.classList.remove('open');
         });
         document.getElementById('name').addEventListener('click', function () {
             navigator.clipboard?.writeText('Herman Harazha').catch(function () {});
